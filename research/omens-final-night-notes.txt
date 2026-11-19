@@ -1,0 +1,36 @@
+HISTORICAL PRODUCTION NOTES
+VENIVIDIVICI — September AD96, omens and final-night image batch
+Research checked 28 October 2026.
+
+Sources actually consulted:
+Suetonius, Life of Domitian 15–17, J. C. Rolfe translation, Lexundria:
+https://lexundria.com/suet_dom/15/r
+https://lexundria.com/suet_dom/16/r
+https://lexundria.com/suet_dom/17/r
+Chapter 15 timed out on first direct fetch, but its full text was retrieved in search. Chapter 15 reports lightning strikes and a dream about Minerva; chapter 16 reports fruit offered on the day before his death and a leap from bed around midnight; chapter 17 specifies Stephanus's left arm wrapped in wool and a concealed dagger. These are ancient biographical reports, not independently established eyewitness details. Omens must not be presented as verified supernatural phenomena. Apples follow Rolfe's translation as requested; other translations differ on the fruit.
+
+Architecture:
+Platner and Ashby, A Topographical Dictionary of Ancient Rome (1929), Aedes Jovis Capitolini:
+https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Jovis_Capitolini.html
+Domitianic temple: hexastyle Corinthian facade, white marble, gilded roof, triple sanctuary; exact reconstructed sculptural details remain uncertain.
+Musei Capitolini, Area of the Temple of Jupiter Capitolinus:
+https://museicapitolini.org/en/node/2528
+Parco archeologico del Colosseo, Palatium itinerary and Palatine overview:
+https://colosseo.it/en/itineraries/palatium-living-on-the-palatine-from-the-foundation-of-rome-to-the-modern-age/
+https://colosseo.it/en/area/the-palatine/
+These establish a public/private Domitianic palace complex on the Palatine.
+
+Evidence status by image:
+1 and 8: broad atmospheric city reconstructions, not exact archaeological surveys or verified weather. No precise lunar phase asserted. Later monuments excluded.
+2: plausible incidental messenger activity, not a claim of an attested communication or identified messenger.
+3 and 4: illustrate Suetonius's report of a feigned left-arm injury and concealed dagger. Exact wrapping technique, dagger form and private room are reconstruction.
+5: illustrative reception of troubling reports described in chapter 15; particular advisers, meeting, expressions and written objects are reconstruction.
+6: illustration of the reported temple lightning strike, with storm appearance and precise moment reconstructed; not a claim of verified divine intervention or exact dated weather. No collapse is added.
+7: representative Roman Minerva statue, not a claim to reproduce Domitian's exact lost shrine statue.
+9: illustrates the offered fruit in chapter 16; setting, servants, gesture and dish are reconstruction. No poisoning implied.
+10: illustrates the reported midnight terror; exact bed, room, posture and clothing are reconstructed. No cause or supernatural apparition invented.
+
+Identity and style references:
+Domitian Directs the Palace Guard.png — libfile_fb94a82b636c81918fdc62cc03d85ea0
+Stephanus, Steward of the Roman Household.png — libfile_95e0a92a7c408191b6e664c006d5ce86
+Final images use painterly continuity and are separate 16:9 frames.
