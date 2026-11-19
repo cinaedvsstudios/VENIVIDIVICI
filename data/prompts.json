@@ -209,6 +209,96 @@
       "title": "Build a historically grounded 16:9 image prompt",
       "source": "Newly assembled from Episode 1 Development.txt and 04_Production_Workflow_and_Quality_Control.txt; NOT a verbatim historical prompt",
       "text": "Create ONE independent full-frame 16:9 historical illustration for VENIVIDIVICI, set in [YEAR, PLACE, SCENE]. Use the established detailed, atmospheric painterly Roman-history reconstruction style with warm Mediterranean colours, subtle brush texture, realistic period materials, natural lighting and consistent recurring characters. Research-accurate architecture, hairstyles, clothing, furnishings and tools, with no later monuments, fantasy, glossy CGI, modern objects, captions, watermarks or collages. Compose the scene around [CHARACTER ACTION, VIEWPOINT, LOCATION], preserving the established reference likenesses. Record which details are attested and which are visual reconstruction in separate production notes."
+    },
+    {
+      "id": "user-ep1-outline",
+      "kind": "original-user-message",
+      "category": "Research & planning",
+      "batch": "Episode 1 Development — 15 Oct 2026",
+      "title": "Original request: episode index and first ten minutes",
+      "source": "Quoted user instruction recovered from the named production conversation",
+      "text": "So can you make first an index of the whole episode with the six 10-minute sections and briefly what's going to be in each one. And then I want you to expand and show me what you would do in the first 10 minutes."
+    },
+    {
+      "id": "user-ep1-dialogue1",
+      "kind": "original-user-message",
+      "category": "Narration",
+      "batch": "Episode 1 Development — 15 Oct 2026",
+      "title": "Original request: Section 1 narration",
+      "source": "Quoted user instruction recovered from the named production conversation",
+      "text": "ok give me the first 10 min dialogue for review"
+    },
+    {
+      "id": "user-ep1-dialogue2",
+      "kind": "original-user-message",
+      "category": "Narration",
+      "batch": "Episode 1 Development — 20 Oct 2026",
+      "title": "Original request: Section 2 narration",
+      "source": "Quoted user instruction recovered from the named production conversation",
+      "text": "okay can you give me section 2?"
+    },
+    {
+      "id": "user-ep1-dialogue3",
+      "kind": "original-user-message",
+      "category": "Narration",
+      "batch": "Episode 1 Development — 21 Oct 2026",
+      "title": "Original request: Section 3 narration",
+      "source": "Quoted user instruction recovered from the named production conversation",
+      "text": "Can you write the dialogue for section three?"
+    },
+    {
+      "id": "user-ep1-pronunciation",
+      "kind": "original-user-message",
+      "category": "Narration",
+      "batch": "Episode 1 Development — 15 Oct 2026",
+      "title": "Original request: phonetic spellings",
+      "source": "Quoted user instruction recovered from the named production conversation",
+      "text": "Write one sentence with all of the phonetic spellings of words. So I just paste the one sentence in."
+    },
+    {
+      "id": "user-logo-title",
+      "kind": "original-user-message",
+      "category": "Images",
+      "batch": "Episode 1 Development — 15 Oct 2026",
+      "title": "Original request: animated title image",
+      "source": "Quoted user instruction recovered from the named production conversation",
+      "text": "now using this logo, make a 16x9 image i can animate as the title screen on the videos"
+    },
+    {
+      "id": "user-logo-motion",
+      "kind": "original-user-message",
+      "category": "Images",
+      "batch": "Episode 1 Development — 15 Oct 2026",
+      "title": "Original request: animation prompt",
+      "source": "Quoted user instruction recovered from the named production conversation",
+      "text": "now write me a prompt for this animation"
+    },
+    {
+      "id": "episode2-outline-archive",
+      "kind": "recovered-summary",
+      "category": "Research & planning",
+      "batch": "Episode Two Outline — 1 Nov 2026",
+      "title": "Nerva outline request — recovered direction",
+      "source": "Summary of the original user direction (NOT verbatim)",
+      "text": "Review the Episode One structure. Plan Episode Two in four sections of approximately 11–13 minutes each. First produce an index listing section subtitles, internal talking points and approximate timings."
+    },
+    {
+      "id": "episode2-visual-plan-archive",
+      "kind": "recovered-summary",
+      "category": "Images",
+      "batch": "Episode Two Outline — 1 Nov 2026",
+      "title": "Nerva image-placement plan — recovered direction",
+      "source": "Summary of the original user direction (NOT verbatim)",
+      "text": "For every approximately two-minute narration block, provide three to five short scene descriptions. Number images in batches of ten with reusable image codes; place reused images at the end of each batch."
+    },
+    {
+      "id": "episode2-narration-archive",
+      "kind": "recovered-summary",
+      "category": "Narration",
+      "batch": "Episode Two Outline — 1 Nov 2026",
+      "title": "Nerva Section 1 writing request — recovered direction",
+      "source": "Summary of the original user direction (NOT verbatim)",
+      "text": "Write Section 1 of the Nerva narration, using the same phonetic spellings for people's names that were established in Episode One."
     }
   ]
 }
