@@ -1,0 +1,25 @@
+HISTORICAL PRODUCTION NOTES
+VENIVIDIVICI — Domitian's death and Phyllis: visual production notes
+Checked 28 October 2026.
+
+Primary sources consulted:
+Suetonius, Life of Domitian 17, translation J. C. Rolfe:
+https://lexundria.com/suet_dom/17/r
+Suetonius, Life of Domitian 23, translation J. C. Rolfe:
+https://lexundria.com/suet_dom/23/r
+
+Evidence status:
+Chapter17 reports Stephanus's concealed dagger and first low wound, resistance and appeal to a young attendant, additional attackers including Maximus (Parthenius's freedman), Clodianus, Satur and an imperial-school gladiator. It also credits Phyllis with cremation and subsequently mingling the remains with Julia's. This is an ancient literary account rather than a complete independently corroborated eyewitness reconstruction.
+Chapter23 describes soldiers' grief and desire for vengeance. The precise guard group and gestures in image6 are illustrative.
+
+Material reconstruction decisions:
+1: User requested a knife in the stomach; image represents a restrained clothed lower-abdominal injury. Exact wound level, dagger position and posture are reconstructed, not an anatomical documentary claim. No graphic wound is shown.
+2–3: Upright moments of resistance are visual reconstruction; the source ultimately describes grappling on the floor. The attendant's precise age and appearance are invented, not an identified portrait. Domitian's appeal is represented without invented quoted words.
+4–5: Parthenius is included at the user's explicit request. His physical presence in the room and observation of the body are SPECULATIVE STAGING. Suetonius names his freedman Maximus among those inflicting wounds, not Parthenius himself. He is therefore shown empty-handed away from the direct assault. The timing and arrangement of entry and the immediate aftermath are reconstructed. Maximus is not the unrelated general Lappius Maximus.
+7: Phyllis's face and clothing follow an established project reference. Her actual appearance is unknown.
+8: Watching attendants wrap the body is a plausible funerary reconstruction, not a specifically attested action or meeting. The property setting and helpers are invented incidental details.
+9: Two urns placed alongside one another follow the user's requested visual. This is an illustrative preparatory moment, NOT a claim that the remains were permanently kept in two separate vessels: Suetonius says they were mingled. Exact vessels, shelf and chamber layout are reconstruction. Julia is represented by a funerary urn, not a living character.
+
+Visual continuity:
+Domitian and Stephanus use the established local identity references from the preceding batch. Parthenius uses Parthenius Brings Urgent News.png. Phyllis uses Phyllis beside the Roman funerary urn.png. New anonymous/conspirator faces are illustrative; image5 is generated using image4 for group continuity.
+All final frames are separate 16:9 painted historical illustrations. Violence and death are non-graphic.
