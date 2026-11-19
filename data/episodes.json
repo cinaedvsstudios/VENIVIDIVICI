@@ -1,0 +1,126 @@
+{
+  "series": "VENIVIDIVICI — Voices History Left Behind",
+  "youtubeChannel": "https://www.youtube.com/@VoicesHistoryLeftBehind",
+  "updated": "2026-11-20",
+  "episodes": [
+    {
+      "id": "01",
+      "number": 1,
+      "title": "Domitian",
+      "subtitle": "The Last Day",
+      "period": "AD 96",
+      "kind": "episode",
+      "status": "Narration completed",
+      "statusDetail": "Four narration sections were completed in the Episode 1 Development conversation. Full scripts have not yet been imported into this repository.",
+      "summary": "In the palace on the Palatine, an emperor watches the passing of an hour. Around him are servants, old loyalties and men whose intentions will bring his reign to an end. The story follows Domitian's final day, the memories that shaped his rule, the conspiracy, and the uncertain succession that follows.",
+      "context": [
+        "Domitian and the imperial household",
+        "18 September AD 96 — assassination",
+        "The Senate, soldiers and the arrival of Nerva"
+      ],
+      "sections": [
+        {
+          "title": "Narration section 1",
+          "status": "Completed — original text to import",
+          "file": "scripts/episode-01-section-1.txt"
+        },
+        {
+          "title": "Narration section 2",
+          "status": "Completed — original text to import",
+          "file": "scripts/episode-01-section-2.txt"
+        },
+        {
+          "title": "Narration section 3",
+          "status": "Completed — original text to import",
+          "file": "scripts/episode-01-section-3.txt"
+        },
+        {
+          "title": "Narration section 4",
+          "status": "Completed — original text to import",
+          "file": "scripts/episode-01-section-4.txt"
+        }
+      ],
+      "videoUrl": null,
+      "source": "Episode 1 Development conversation and current series-concept document"
+    },
+    {
+      "id": "02",
+      "number": 2,
+      "title": "Nerva",
+      "subtitle": "The Emperor Who Chose His Successor",
+      "period": "AD 96–98",
+      "kind": "episode",
+      "status": "In development",
+      "statusDetail": "Sections 1–3 were drafted and were reported as saved in a Google Doc in the Episode Two Outline conversation. Section 4 was not yet written in the last available production note.",
+      "summary": "With Domitian dead, Rome has a new emperor but no simple path to security. Nerva faces a wary Senate, an army still loyal to his predecessor, and an increasingly urgent question about who should inherit the empire.",
+      "context": [
+        "Nerva's accession and the aftermath of Domitian",
+        "The Senate and the Praetorian Guard",
+        "Adoption of Trajan and the imperial succession"
+      ],
+      "sections": [
+        {
+          "title": "The Empty Throne",
+          "status": "Drafted — original text to import",
+          "words": 2182,
+          "file": "scripts/episode-02-section-1.txt"
+        },
+        {
+          "title": "The Burden of Mercy",
+          "status": "Drafted — original text to import",
+          "words": 2180,
+          "file": "scripts/episode-02-section-2.txt"
+        },
+        {
+          "title": "The Emperor and the Guard",
+          "status": "Drafted — original text to import",
+          "words": 2034,
+          "file": "scripts/episode-02-section-3.txt"
+        },
+        {
+          "title": "A Son for Rome",
+          "status": "Outline — narration not yet written",
+          "file": null
+        }
+      ],
+      "videoUrl": null,
+      "source": "Episode Two Outline conversation and current series-concept document"
+    },
+    {
+      "id": "03",
+      "number": 3,
+      "title": "Trajan",
+      "subtitle": "A New Emperor at the Frontier",
+      "period": "AD 98 onward",
+      "kind": "episode",
+      "status": "Proposed",
+      "statusDetail": "Trajan is the next subject named in the approved series plan. This is a working proposal, not an approved full script or final title.",
+      "summary": "The empire passes to a soldier who begins his rule far from Rome. The story will develop from Trajan's real decisions, relationships and experiences, not a rigid timetable of reigns.",
+      "context": [
+        "Trajan and the succession of AD 98",
+        "Frontier command and imperial authority",
+        "The transition from Nerva's Rome"
+      ],
+      "sections": [],
+      "videoUrl": null,
+      "source": "01_Series_Concept_and_Episode_Plan.txt"
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Pliny the Younger",
+      "sub": "Witness to a changing Rome",
+      "description": "A potential character-led story drawing on Pliny's writings, senatorial life and his contemporaries. Not assigned an episode number."
+    },
+    {
+      "title": "The Trial of Marius Priscus",
+      "sub": "Justice in the Senate",
+      "description": "An earlier proposed subject centred on a documented provincial corruption trial. Its eventual narrative placement is undecided."
+    },
+    {
+      "title": "Beyond Trajan",
+      "sub": "Lives across the empire",
+      "description": "Further Roman lives and events will be chosen after research rather than fixed to predetermined year blocks."
+    }
+  ]
+}
