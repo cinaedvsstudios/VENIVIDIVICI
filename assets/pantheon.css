@@ -89,3 +89,93 @@
  :root{--dome-height:118px}
  #app-header{height:118px}
 }
+
+/* Reusable Pantheon architecture: no text, icons, or symbols are baked into
+   the image. The original curved five-position header is now real HTML.
+   The source image retains its NATURAL aspect ratio: top pixels are clipped,
+   never vertically squeezed. */
+:root{--dome-height:18.25vw}
+#app-header{height:var(--dome-height);box-shadow:0 5px 15px -11px rgba(41,22,10,.55)}
+#app-header .dome-shell{height:100%;overflow:hidden;isolation:isolate}
+#app-header .dome-image{position:absolute;top:auto;right:0;bottom:0;left:0;width:100%;height:auto;max-width:none;object-fit:contain;object-position:center bottom;pointer-events:none;user-select:none}
+#app-header .dome-title-home{
+ position:absolute;z-index:4;top:1%;left:33%;width:34%;height:38%;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:1px;text-align:center;background:transparent;color:#8c5a26
+}
+#app-header .dome-brand-rule{display:block;width:94%;height:2px;max-height:2px;flex:0 0 2px;background:linear-gradient(90deg,transparent,#9f682c 8%,#d1a86d 45%,#8a5925 92%,transparent);box-shadow:0 1px 1px #fff8e6}
+#app-header .dome-brand-title{
+ display:block;font:600 clamp(19px,2.5vw,46px)/1.09 var(--roman);
+ letter-spacing:-.055em;white-space:nowrap;
+ background:linear-gradient(180deg,#fbe9bd 0%,#d2a363 28%,#8f5b2d 60%,#d6b071 85%,#8c562b 100%);
+ background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+ -webkit-text-stroke:.45px #764720;
+ filter:drop-shadow(0 1px 0 #fff3dd) drop-shadow(0 2px 1px rgba(68,34,10,.45))
+}
+#app-header .dome-diamond{font-size:.43em;margin:0 .22em;vertical-align:15%;-webkit-text-fill-color:#a27030}
+#app-header .dome-brand-sub{
+ font:700 clamp(7px,.86vw,16px)/1.4 var(--roman);
+ letter-spacing:.065em;white-space:nowrap;color:#895424;
+ text-shadow:0 1px 0 #ffefd2,0 2px 1px #73512770
+}
+#app-header .dome-nav{position:absolute;inset:0;z-index:5;pointer-events:none}
+#app-header .dome-hit{
+ position:absolute;display:flex;flex-direction:column;align-items:center;
+ justify-content:center;gap:4px;transform:translate(-50%,-50%);
+ width:14%;height:auto;min-height:71px;padding:2px 0;
+ border-radius:0;pointer-events:auto;background:transparent;color:#6b421d;
+ text-align:center;filter:none;transition:filter .2s
+}
+#app-header .dome-hit::after{display:none}
+#app-header .dome-hit:hover,#app-header .dome-hit:focus-visible{
+ background:transparent;filter:drop-shadow(0 0 6px rgba(170,99,26,.6))
+}
+#app-header .nav-circle{
+ display:flex;justify-content:center;align-items:center;
+ width:clamp(34px,3.65vw,59px);height:clamp(34px,3.65vw,59px);
+ border:2px solid #9f703c;border-radius:50%;background:transparent;
+ color:#92602d;box-shadow:inset 0 0 0 2px rgba(241,211,161,.38),0 2px 3px #53331e55;
+ transition:transform .16s,border-color .16s
+}
+#app-header .nav-circle svg{width:54%;height:54%;stroke:currentColor}
+#app-header .nav-label{
+ display:block;font:700 clamp(8px,.78vw,13px)/1.25 var(--roman);
+ text-transform:uppercase;letter-spacing:.015em;white-space:nowrap;color:#2e1b12;
+ text-shadow:0 1px 1px #fff5e3
+}
+#app-header .dome-hit:hover .nav-circle{transform:translateY(-2px);border-color:#c58e3e}
+#app-header .dome-hit.is-current .nav-label{color:#831f1b}
+#app-header .dome-hit.is-current .nav-circle{border-color:#bf852b;box-shadow:inset 0 0 0 2px #f4d7a180,0 2px 6px #ad762e99}
+#app-header .dome-hit.is-current .nav-label::after{content:'';display:block;height:2px;width:60%;background:#c28b2b;margin:3px auto 0;box-shadow:0 0 4px #d8a24c}
+#app-header .dome-hit[data-key="home"]{left:19%;top:44%}
+#app-header .dome-hit[data-key="episodes"]{left:32%;top:66%}
+#app-header .dome-hit[data-key="videos"]{left:50%;top:75%}
+#app-header .dome-hit[data-key="wizard"]{left:68%;top:66%}
+#app-header .dome-hit[data-key="links"]{left:81%;top:44%}
+/* The previous seven hotspot positions are deliberately no longer used. */
+.video-list{max-width:960px;margin:14px auto 25px;text-align:left}
+.video-row{display:flex;align-items:center;gap:20px;padding:15px 0;border-bottom:1px solid var(--rule)}
+.video-thumb{width:160px;height:106px;flex-shrink:0;object-fit:cover;border-radius:6px;border:1px solid #caa46e}
+.video-thumb.logo-image{object-fit:contain;background:#2c1e13}
+.video-info{flex:1;min-width:0}
+.video-info h2{font:600 28px/1.1 var(--serif);margin:4px 0}
+.video-info p{font:italic 18px/1.2 var(--serif);margin:0 0 5px;color:var(--muted)}
+.video-state{font:600 11px/1.4 var(--roman);color:#865f3b}
+.video-row .secondary-cta,.video-row .source-link{white-space:nowrap}
+.useful-links{width:min(100%,760px);margin:15px auto;display:flex;flex-direction:column;gap:2px}
+.useful-link{display:flex;justify-content:space-between;align-items:center;padding:18px 11px;border-bottom:1px solid var(--rule);font:600 18px/1.3 var(--serif);text-align:left}
+.useful-link:hover{color:var(--crimson)}
+.useful-link span:last-child{color:var(--gold-dark)}
+@media(max-width:1050px) and (min-width:761px){
+ #app-header .dome-brand-title{font-size:2.5vw}
+ #app-header .nav-label{font-size:8px}
+ #app-header .dome-hit{gap:1px;min-height:53px}
+}
+@media(max-width:760px){
+ :root{--dome-height:118px}
+ #app-header{height:118px}
+ .video-row{flex-wrap:wrap;gap:9px}
+ .video-thumb{width:90px;height:72px}
+ .video-info h2{font-size:23px}
+ .video-row .secondary-cta,.video-row .source-link{margin-left:auto}
+}
