@@ -50,8 +50,8 @@
       "subtitle": "The Emperor Who Chose His Successor",
       "period": "AD 96–98",
       "kind": "episode",
-      "status": "In development",
-      "statusDetail": "Sections 1–3 were drafted and were reported as saved in a Google Doc in the Episode Two Outline conversation. Section 4 was not yet written in the last available production note.",
+      "status": "In production — 3 of 4 sections drafted",
+      "statusDetail": "The first three sections were imported verbatim from the linked Episode 2 Google Doc. Section 4, A Son for Rome, is not yet written.",
       "summary": "With Domitian dead, Rome has a new emperor but no simple path to security. Nerva faces a wary Senate, an army still loyal to his predecessor, and an increasingly urgent question about who should inherit the empire.",
       "context": [
         "Nerva's accession and the aftermath of Domitian",
@@ -61,30 +61,31 @@
       "sections": [
         {
           "title": "The Empty Throne",
-          "status": "Drafted — original text to import",
+          "status": "Draft imported from Google Doc",
           "words": 2182,
           "file": "scripts/episode-02-section-1.txt"
         },
         {
           "title": "The Burden of Mercy",
-          "status": "Drafted — original text to import",
+          "status": "Draft imported from Google Doc",
           "words": 2180,
           "file": "scripts/episode-02-section-2.txt"
         },
         {
           "title": "The Emperor and the Guard",
-          "status": "Drafted — original text to import",
+          "status": "Draft imported from Google Doc",
           "words": 2034,
           "file": "scripts/episode-02-section-3.txt"
         },
         {
           "title": "A Son for Rome",
-          "status": "Outline — narration not yet written",
+          "status": "Unwritten — next action",
           "file": null
         }
       ],
       "videoUrl": null,
-      "source": "Episode Two Outline conversation and current series-concept document"
+      "source": "Episode 2 Google Doc (linked), Episode Two Outline conversation, series plan",
+      "sourceDocumentUrl": "https://docs.google.com/document/d/1kuhTBvZMVaO4BUOJiKJyO9TkjjDuD-hn937Faff6xmA/edit?usp=sharing"
     },
     {
       "id": "03",
