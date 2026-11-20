@@ -10,18 +10,24 @@ const view=page==='wizard'?'wizard':page==='episode'?'episodes':qs.get('view')||
 const navItems=[
  {key:'home',label:'Home',href:'index.html'},
  {key:'episodes',label:'Episodes',href:'index.html?view=episodes'},
- {key:'characters',label:'Characters',href:'index.html?view=characters'},
- {key:'context',label:'Context',href:'index.html?view=context'},
+ {key:'videos',label:'Videos',href:'index.html?view=videos'},
  {key:'wizard',label:'Prompt Wizard',href:'prompts.html'},
- {key:'resources',label:'Resources',href:'index.html?view=resources'},
- {key:'about',label:'About',href:'index.html?view=about'}
+ {key:'links',label:'Links',href:'index.html?view=links'}
 ];
+const iconPaths={
+ home:'<path d="M4 9a9 9 0 0 0 16 0"/><path d="m4 10-2-3m2 6-3-1m5 4-2 1m16-7 2-3m-2 6 3-1m-5 4 2 1"/><path d="M12 5v12"/>',
+ episodes:'<path d="M12 6c-3-2-6-2-9-1v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Z"/><path d="M12 6v14"/>',
+ videos:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/>',
+ wizard:'<path d="m4 20 12-12"/><path d="m14 4 1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/><path d="M19 13v4m-2-2h4M5 5v4M3 7h4"/>',
+ links:'<path d="m9 14 6-6"/><path d="M10 7 8 7a4 4 0 0 0 0 8h2"/><path d="M14 17h2a4 4 0 0 0 0-8h-2"/>'
+};
+const navIcon=key=>'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(iconPaths[key]||iconPaths.home)+'</svg>';
 const R=['','I','II','III','IV','V','VI','VII'];
 const roman=n=>R[n]||String(n);
 const originalImage=ep=>ep.id==='01'?'assets/images/domitian-thumb.webp':ep.id==='02'?'assets/images/nerva-portrait.webp':'assets/images/logo-columns.webp';
 const imgClass=ep=>ep.id==='03'?'logo-image':'';
 function shell(){
- $('app-header').innerHTML='<div class="dome-shell"><img class="dome-image" src="assets/images/pantheon-approved.webp" alt="" aria-hidden="true"><a class="dome-title-home" href="index.html" aria-label="VENIVIDIVICI home"><span class="visually-hidden">VENIVIDIVICI home</span></a><nav class="dome-nav" aria-label="Main site navigation">'+navItems.map(v=>'<a class="dome-hit'+(view===v.key?' is-current':'')+'" data-key="'+v.key+'" href="'+v.href+'" title="'+v.label+'" aria-label="'+v.label+'"'+(view===v.key?' aria-current="page"':'')+'><span class="visually-hidden">'+v.label+'</span></a>').join('')+'</nav></div><div class="mobile-dome"><a href="index.html" aria-label="VENIVIDIVICI home"><img class="mobile-brand" src="assets/images/logo-small.webp" alt="VENI VIDI VICI — Voices History Left Behind"></a><nav aria-label="Mobile site navigation">'+navItems.map(v=>'<a href="'+v.href+'"'+(view===v.key?' class="active" aria-current="page"':'')+'>'+v.label+'</a>').join('')+'</nav></div>';
+ $('app-header').innerHTML='<div class="dome-shell"><img class="dome-image" src="assets/images/pantheon-architecture.webp" alt="" aria-hidden="true"><a class="dome-title-home" href="index.html" aria-label="VENIVIDIVICI home"><span class="dome-brand-rule"></span><span class="dome-brand-title">VENI<span class="dome-diamond">◆</span>VIDI<span class="dome-diamond">◆</span>VICI</span><span class="dome-brand-sub">VOICES HISTORY LEFT BEHIND</span><span class="dome-brand-rule"></span></a><nav class="dome-nav" aria-label="Main site navigation">'+navItems.map(v=>'<a class="dome-hit'+(view===v.key?' is-current':'')+'" data-key="'+v.key+'" href="'+v.href+'" title="'+v.label+'"'+(view===v.key?' aria-current="page"':'')+'><span class="nav-circle">'+navIcon(v.key)+'</span><span class="nav-label">'+v.label+'</span></a>').join('')+'</nav></div><div class="mobile-dome"><a href="index.html" aria-label="VENIVIDIVICI home"><img class="mobile-brand" src="assets/images/logo-small.webp" alt="VENI VIDI VICI — Voices History Left Behind"></a><nav aria-label="Mobile site navigation">'+navItems.map(v=>'<a href="'+v.href+'"'+(view===v.key?' class="active" aria-current="page"':'')+'>'+v.label+'</a>').join('')+'</nav></div>';
  $('app-footer').innerHTML='';
 }
 const header=(sup,title,subtitle,description='')=>'<div class="page-overline">'+sup+'</div><h1 class="page-title">'+title+'</h1><div class="page-subtitle">'+subtitle+'</div>'+(description?'<p class="page-description">'+description+'</p>':'')+'<div class="page-underline"></div>';
@@ -38,23 +44,14 @@ function renderEpisodes(data){
  document.title='Episodes — VENIVIDIVICI';
  $('app-main').innerHTML='<section class="page-content utility-content"><h1 class="utility-title">EPISODES</h1><nav class="select-episodes" aria-label="Select episode">'+data.episodes.map(e=>'<a class="ep-select-link'+(ep.id===e.id?' selected':'')+'" href="index.html?view=episodes&id='+e.id+'"><span class="ep-select-mark">'+roman(e.number)+'</span>'+esc(e.title)+'</a>').join('')+'</nav><div class="feature-story"><div class="portrait-arch"><img class="'+imgClass(ep)+'" src="'+originalImage(ep)+'" alt="'+esc(ep.title)+' original project artwork"></div><div class="feature-copy"><div class="page-overline">EPISODE '+roman(ep.number)+' · '+esc(ep.period)+'</div><h2>'+esc(ep.title)+'</h2><div class="page-subtitle">'+esc(ep.subtitle)+'</div><p>'+esc(ep.summary)+'</p><div class="feature-status">'+esc(ep.status)+'</div><div class="utility-action">'+pill('OPEN DOSSIER','episode.html?id='+ep.id)+'</div></div></div></section>';
 }
-function renderCharacters(data){
- document.title='Characters — VENIVIDIVICI';
- const ep=data.episodes;
- $('app-main').innerHTML='<section class="page-content utility-content"><h1 class="utility-title">CHARACTERS</h1><div class="arts-row">'+ep.map(e=>'<a class="art-display" href="episode.html?id='+e.id+'"><figure><img src="'+originalImage(e)+'" alt="'+esc(e.title)+' project artwork"><figcaption>EPISODE '+roman(e.number)+' — '+esc(e.title)+'</figcaption></figure></a>').join('')+'</div><p class="page-context-note">Trajan portrait not yet supplied.</p></section>';
+function renderVideos(data){
+ document.title='Videos — VENIVIDIVICI';
+ $('app-main').innerHTML='<section class="page-content utility-content"><h1 class="utility-title">VIDEOS</h1><div class="video-list">'+data.episodes.map(ep=>'<div class="video-row"><img src="'+originalImage(ep)+'" alt="" class="video-thumb '+imgClass(ep)+'"><div class="video-info"><div class="page-overline">EPISODE '+roman(ep.number)+'</div><h2>'+esc(ep.title)+'</h2><p>'+esc(ep.subtitle)+'</p><div class="video-state">'+(ep.videoUrl?'Published':'Not published')+'</div></div>'+(ep.videoUrl?'<a class="secondary-cta" href="'+esc(ep.videoUrl)+'" target="_blank" rel="noopener noreferrer">WATCH ON YOUTUBE ↗</a>':'<a class="source-link" href="episode.html?id='+ep.id+'">OPEN DOSSIER ↗</a>')+'</div>').join('')+'</div><div class="source-links"><a class="secondary-cta" href="'+VVV.channel+'" target="_blank" rel="noopener noreferrer">YOUTUBE CHANNEL ↗</a></div></section>';
 }
-function renderContext(){
- document.title='Historical context — VENIVIDIVICI';
- $('app-main').innerHTML='<section class="page-content utility-content"><h1 class="utility-title">HISTORICAL CONTEXT</h1><div class="historical-timeline"><article class="historical-item"><div class="historical-date">18 SEPTEMBER · AD 96</div><h3>Domitian dies</h3><p>Domitian is assassinated in the imperial palace. His death closes the Flavian dynasty and begins the transition to Nerva.</p><a class="source-link" href="episode.html?id=01">Episode I — Domitian ↗</a></article><article class="historical-item"><div class="historical-date">AD 96–98</div><h3>Nerva faces the empire</h3><p>His government must navigate the Senate, the Praetorian Guard, and the pressing question of succession. The fourth narration section remains to be written.</p><a class="source-link" href="episode.html?id=02">Episode II — Nerva ↗</a></article><article class="historical-item"><div class="historical-date">AFTER NERVA · AD 98 ONWARD</div><h3>Trajan follows</h3><p>Trajan is the next planned subject, to be developed from the surviving historical evidence rather than a fixed calendar of topics.</p><a class="source-link" href="episode.html?id=03">Episode III — Trajan ↗</a></article></div></section>';
-}
-function renderResources(){
- document.title='Resources — VENIVIDIVICI';
- const images=[['Three-column series emblem','assets/images/logo-columns.webp'],['Horizontal series mark','assets/images/logo-small.webp'],['Domitian episode artwork','assets/images/domitian-thumb.webp'],['Nerva portrait','assets/images/nerva-portrait.webp']];
- $('app-main').innerHTML='<section class="page-content utility-content"><h1 class="utility-title">RESOURCES</h1><div class="source-links"><a class="source-link" href="'+VVV.doc2+'" target="_blank" rel="noopener noreferrer">Episode 2 Google Doc ↗</a><a class="source-link" href="'+VVV.repository+'" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="source-link" href="'+VVV.channel+'" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div><div class="arts-row">'+images.map(i=>'<div class="art-display"><figure><img src="'+i[1]+'" alt="'+i[0]+'"><figcaption>'+i[0]+'</figcaption></figure></div>').join('')+'</div></section>';
-}
-function renderAbout(){
- document.title='About — VENIVIDIVICI';
- $('app-main').innerHTML='<section class="page-content utility-content"><h1 class="utility-title">ABOUT</h1><p class="editorial-paragraph">Immersive, historically researched narration about ancient Rome, beginning with Domitian and continuing through Nerva and Trajan. Historical research, narration and visual production materials remain separate.</p><div class="source-links"><a class="source-link" href="index.html?view=episodes">Episodes</a><a class="source-link" href="prompts.html">Prompt wizard</a></div></section>';
+function renderLinks(){
+ document.title='Links — VENIVIDIVICI';
+ const links=[['YouTube channel',VVV.channel],['Episode 2 working script',VVV.doc2],['GitHub repository',VVV.repository]];
+ $('app-main').innerHTML='<section class="page-content utility-content"><h1 class="utility-title">LINKS</h1><div class="useful-links">'+links.map(([name,url])=>'<a class="useful-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer"><span>'+esc(name)+'</span><span aria-hidden="true">↗</span></a>').join('')+'</div></section>';
 }
 function renderEpisode(data){
  const id=qs.get('id')||'02',ep=data.episodes.find(x=>x.id===id);
@@ -106,10 +103,8 @@ async function boot(){
   const data=await getJSON('data/episodes.json');
   if(page==='episode'){renderEpisode(data);return;}
   if(view==='episodes')renderEpisodes(data);
-  else if(view==='characters')renderCharacters(data);
-  else if(view==='context')renderContext();
-  else if(view==='resources')renderResources();
-  else if(view==='about')renderAbout();
+  else if(view==='videos')renderVideos(data);
+  else if(view==='links')renderLinks();
   else renderHome(data);
  }catch(err){console.error('VENIVIDIVICI load failed:',err);$('app-main').innerHTML='<section class="page-content"><h1>Could not load project data.</h1><p>Please check that the site is hosted over HTTPS and that the original project data files are available.</p></section>';}
 }
