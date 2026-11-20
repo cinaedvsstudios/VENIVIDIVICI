@@ -22,10 +22,10 @@ const iconPaths={
  links:'<path d="m9 14 6-6"/><path d="M10 7 8 7a4 4 0 0 0 0 8h2"/><path d="M14 17h2a4 4 0 0 0 0-8h-2"/>'
 };
 const navIcon=key=>'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(iconPaths[key]||iconPaths.home)+'</svg>';
-const R=['','I','II','III','IV','V','VI','VII'];
+const R=['','I','II','III','IV','V','VI','VII','VIII','IX','X'];
 const roman=n=>R[n]||String(n);
 const originalImage=ep=>ep.id==='01'?'assets/images/domitian-thumb.webp':ep.id==='02'?'assets/images/nerva-portrait.webp':'assets/images/logo-columns.webp';
-const imgClass=ep=>ep.id==='03'?'logo-image':'';
+const imgClass=ep=>Number(ep.number)>=3?'logo-image':'';
 function shell(){
  const headerLinks=navItems.map(v=>'<td class="dome-nav-cell"><a class="dome-hit'+(view===v.key?' is-current':'')+'" data-key="'+v.key+'" href="'+v.href+'" aria-label="'+v.label+'"'+(view===v.key?' aria-current="page"':'')+'><img class="dome-medallion" src="assets/images/nav-'+(v.key==='wizard'?'prompts':v.key)+'.png" alt="" aria-hidden="true"><strong class="nav-label">'+v.label+'</strong></a></td>').join('');
  $('app-header').innerHTML='<div class="dome-shell"><img class="dome-image" src="assets/images/pantheon-user-lossless.webp" alt="" aria-hidden="true"><a class="dome-title-home" href="index.html" aria-label="VENIVIDIVICI home"><img class="dome-title-image" src="assets/images/logo-small.webp" alt="VENI VIDI VICI — Voices History Left Behind"></a><nav class="dome-nav" aria-label="Main site navigation"><table class="dome-nav-table" role="presentation"><tbody><tr>'+headerLinks+'</tr></tbody></table></nav></div><div class="mobile-dome"><a href="index.html" aria-label="VENIVIDIVICI home"><img class="mobile-brand" src="assets/images/logo-small.webp" alt="VENI VIDI VICI — Voices History Left Behind"></a><nav aria-label="Mobile navigation">'+navItems.map(v=>'<a href="'+v.href+'"'+(view===v.key?' class="active" aria-current="page"':'')+'>'+v.label+'</a>').join('')+'</nav></div>';
@@ -33,17 +33,49 @@ function shell(){
 }
 const header=(sup,title,subtitle,description='')=>'<div class="page-overline">'+sup+'</div><h1 class="page-title">'+title+'</h1><div class="page-subtitle">'+subtitle+'</div>'+(description?'<p class="page-description">'+description+'</p>':'')+'<div class="page-underline"></div>';
 const pill=(label,href,alternate=false)=>'<a class="'+(alternate?'secondary-cta':'primary-cta')+'" href="'+href+'">'+label+'<span aria-hidden="true" class="arrow">→</span></a>';
-function ribbon(episodes,active='02'){
- return '<nav class="episode-ribbon" aria-label="Episode timeline"><span class="ribbon-line"></span><span class="ribbon-text">EPISODES</span>'+episodes.map(ep=>'<a class="episode-point'+(ep.id===active?' is-current':'')+'" href="episode.html?id='+ep.id+'" aria-label="Episode '+ep.number+': '+esc(ep.title)+'"><span class="episode-seal">'+roman(ep.number)+'</span><span class="episode-point-title">'+esc(ep.title)+'</span><span class="episode-point-status">'+(ep.id==='01'?'Written':ep.id==='02'?'3 of 4 drafted':'Proposed')+'</span></a>').join('')+'<span class="ribbon-trail">❧</span></nav>';
+// Four episodes per page; the last page contains the remaining two.
+function episodeCarousel(episodes, active='02', compact=false){
+ const initial=Math.max(0,Math.floor(episodes.findIndex(ep=>ep.id===active)/4));
+ const pages=[];
+ for(let i=0;i<episodes.length;i+=4){
+  const pageIndex=i/4;
+  const cards=episodes.slice(i,i+4).map(ep=>'<a class="episode-card'+(ep.id===active?' is-current':'')+'" href="episode.html?id='+ep.id+'"'+(ep.id===active?' aria-current="true"':'')+'><span class="episode-card-number">EPISODE '+roman(ep.number)+'</span><span class="episode-seal" aria-hidden="true">'+roman(ep.number)+'</span><h2>'+esc(ep.title)+'</h2><span class="episode-card-subtitle">'+esc(ep.subtitle)+'</span><span class="episode-card-period">'+esc(ep.period)+'</span><p>'+esc(ep.brief||ep.summary)+'</p><span class="episode-card-status">'+esc(ep.id==='01'?'Narration completed':ep.id==='02'?'3 of 4 sections drafted':'Proposed')+'</span></a>').join('');
+  pages.push('<div class="episode-carousel-page" role="group" aria-label="Episodes '+(i+1)+' to '+Math.min(i+4,episodes.length)+'"'+(pageIndex===initial?'':' inert aria-hidden="true"')+'>'+cards+'</div>');
+ }
+ return '<section class="episode-carousel'+(compact?' episode-carousel-home':'')+'" aria-label="Episode catalogue" aria-roledescription="carousel" data-episode-carousel data-page="'+initial+'" data-count="'+episodes.length+'"><div class="episode-carousel-heading"><span>EPISODES</span><span class="episode-carousel-range" aria-live="polite" aria-atomic="true">Episodes '+(initial*4+1)+'–'+Math.min(initial*4+4,episodes.length)+' of '+episodes.length+'</span></div><div class="episode-carousel-controls"><button type="button" class="episode-carousel-arrow" data-step="-1" aria-label="Previous four episodes" title="Previous four episodes"'+(initial===0?' disabled':'')+'><span aria-hidden="true">‹</span></button><div class="episode-carousel-window"><div class="episode-carousel-track" style="transform:translateX(-'+(initial*100)+'%)">'+pages.join('')+'</div></div><button type="button" class="episode-carousel-arrow" data-step="1" aria-label="Next four episodes" title="Next four episodes"'+(initial===pages.length-1?' disabled':'')+'><span aria-hidden="true">›</span></button></div></section>';
+}
+function initEpisodeCarousels(){
+ document.querySelectorAll('[data-episode-carousel]').forEach(carousel=>{
+  const pages=[...carousel.querySelectorAll('.episode-carousel-page')];
+  const previous=carousel.querySelector('[data-step="-1"]');
+  const next=carousel.querySelector('[data-step="1"]');
+  const show=index=>{
+   index=Math.max(0,Math.min(pages.length-1,index));
+   carousel.dataset.page=String(index);
+   carousel.querySelector('.episode-carousel-track').style.transform='translateX(-'+index*100+'%)';
+   pages.forEach((group,i)=>{group.inert=i!==index;if(i===index)group.removeAttribute('aria-hidden');else group.setAttribute('aria-hidden','true')});
+   previous.disabled=index===0;next.disabled=index===pages.length-1;
+   carousel.querySelector('.episode-carousel-range').textContent='Episodes '+(index*4+1)+'–'+Math.min(index*4+4,Number(carousel.dataset.count))+' of '+carousel.dataset.count;
+  };
+  carousel.querySelectorAll('[data-step]').forEach(button=>button.addEventListener('click',()=>show(Number(carousel.dataset.page)+Number(button.dataset.step))));
+  carousel.addEventListener('keydown',event=>{
+   if(event.altKey||event.ctrlKey||event.metaKey)return;
+   let index=Number(carousel.dataset.page);
+   if(event.key==='ArrowRight')index++;else if(event.key==='ArrowLeft')index--;else if(event.key==='Home')index=0;else if(event.key==='End')index=pages.length-1;else return;
+   event.preventDefault();show(index);
+   // Keep keyboard focus inside the newly visible group.
+   pages[Number(carousel.dataset.page)].querySelector('a')?.focus({preventScroll:true});
+  });
+ });
 }
 function renderHome(data){
  document.title='VENIVIDIVICI — Dashboard';
- $('app-main').innerHTML='<section class="portal-landing"><div class="landing-copy"><div class="overline">NEXT TASK</div><h1 class="landing-title">A SON FOR ROME</h1><div class="landing-subtitle">Nerva · Episode II · Section IV</div><div class="landing-meta">3 / 4 NARRATION SECTIONS DRAFTED</div>'+pill('CONTINUE WRITING','prompts.html?quick=nerva')+'<div class="landing-links"><a href="episode.html?id=02">Original Nerva scripts</a></div></div>'+ribbon(data.episodes,'02')+'</section>';
+ $('app-main').innerHTML='<section class="portal-landing"><div class="landing-copy"><div class="overline">NEXT TASK</div><h1 class="landing-title">A SON FOR ROME</h1><div class="landing-subtitle">Nerva · Episode II · Section IV</div><div class="landing-meta">3 / 4 NARRATION SECTIONS DRAFTED</div>'+pill('CONTINUE WRITING','prompts.html?quick=nerva')+'<div class="landing-links"><a href="episode.html?id=02">Original Nerva scripts</a></div></div>'+episodeCarousel(data.episodes,'02',true)+'</section>';
 }
 function renderEpisodes(data){
  let id=qs.get('id')||'02';const ep=data.episodes.find(p=>p.id===id)||data.episodes[1];
  document.title='Episodes — VENIVIDIVICI';
- $('app-main').innerHTML='<section class="page-content utility-content"><h1 class="utility-title">EPISODES</h1><nav class="select-episodes" aria-label="Select episode">'+data.episodes.map(e=>'<a class="ep-select-link'+(ep.id===e.id?' selected':'')+'" href="index.html?view=episodes&id='+e.id+'"><span class="ep-select-mark">'+roman(e.number)+'</span>'+esc(e.title)+'</a>').join('')+'</nav><div class="feature-story"><div class="portrait-arch"><img class="'+imgClass(ep)+'" src="'+originalImage(ep)+'" alt="'+esc(ep.title)+' original project artwork"></div><div class="feature-copy"><div class="page-overline">EPISODE '+roman(ep.number)+' · '+esc(ep.period)+'</div><h2>'+esc(ep.title)+'</h2><div class="page-subtitle">'+esc(ep.subtitle)+'</div><p>'+esc(ep.summary)+'</p><div class="feature-status">'+esc(ep.status)+'</div><div class="utility-action">'+pill('OPEN DOSSIER','episode.html?id='+ep.id)+'</div></div></div></section>';
+ $('app-main').innerHTML='<section class="page-content utility-content"><h1 class="utility-title">EPISODES</h1>'+episodeCarousel(data.episodes,ep.id)+'<div class="feature-story"><div class="portrait-arch"><img class="'+imgClass(ep)+'" src="'+originalImage(ep)+'" alt="'+esc(ep.title)+' original project artwork"></div><div class="feature-copy"><div class="page-overline">EPISODE '+roman(ep.number)+' · '+esc(ep.period)+'</div><h2>'+esc(ep.title)+'</h2><div class="page-subtitle">'+esc(ep.subtitle)+'</div><p>'+esc(ep.summary)+'</p><div class="feature-status">'+esc(ep.status)+'</div><div class="utility-action">'+pill('OPEN DOSSIER','episode.html?id='+ep.id)+'</div></div></div></section>';
 }
 function renderVideos(data){
  document.title='Videos — VENIVIDIVICI';
@@ -107,6 +139,7 @@ async function boot(){
   else if(view==='videos')renderVideos(data);
   else if(view==='links')renderLinks();
   else renderHome(data);
+  initEpisodeCarousels();
  }catch(err){console.error('VENIVIDIVICI load failed:',err);$('app-main').innerHTML='<section class="page-content"><h1>Could not load project data.</h1><p>Please check that the site is hosted over HTTPS and that the original project data files are available.</p></section>';}
 }
 document.addEventListener('DOMContentLoaded',boot);

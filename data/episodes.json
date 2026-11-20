@@ -41,7 +41,8 @@
         }
       ],
       "videoUrl": null,
-      "source": "Episode 1 Development conversation and current series-concept document"
+      "source": "Episode 1 Development conversation and current series-concept document",
+      "brief": "Inside the imperial palace, Domitian faces the final hours of his reign. His death leaves Rome divided over his memory and uncertain about its future."
     },
     {
       "id": "02",
@@ -85,7 +86,8 @@
       ],
       "videoUrl": null,
       "source": "Episode 2 Google Doc (linked), Episode Two Outline conversation, series plan",
-      "sourceDocumentUrl": "https://docs.google.com/document/d/1kuhTBvZMVaO4BUOJiKJyO9TkjjDuD-hn937Faff6xmA/edit?usp=sharing"
+      "sourceDocumentUrl": "https://docs.google.com/document/d/1kuhTBvZMVaO4BUOJiKJyO9TkjjDuD-hn937Faff6xmA/edit?usp=sharing",
+      "brief": "Nerva inherits an uneasy empire. Caught between the Senate and the Praetorian Guard, he turns to Trajan to secure a succession he cannot leave to a son."
     },
     {
       "id": "03",
@@ -104,20 +106,151 @@
       ],
       "sections": [],
       "videoUrl": null,
-      "source": "01_Series_Concept_and_Episode_Plan.txt"
+      "source": "01_Series_Concept_and_Episode_Plan.txt",
+      "brief": "Far from Rome, Trajan learns that he is emperor. Follow his frontier command and eventual arrival in the capital as he begins to turn military authority into trust."
+    },
+    {
+      "id": "04",
+      "number": 4,
+      "title": "Pliny & Tacitus",
+      "subtitle": "The Trial of Marius Priscus",
+      "period": "AD 100",
+      "kind": "episode",
+      "status": "Proposed",
+      "statusDetail": "Working episode brief added on 20 November 2026. Full research and narration have not yet been completed; the title and scope may develop with the evidence.",
+      "summary": "Pliny and Tacitus bring the case against Marius Priscus before the Senate. Through the trial, provincial suffering reaches Rome and tests the promise of justice under Trajan.",
+      "brief": "Pliny and Tacitus bring the case against Marius Priscus before the Senate. Through the trial, provincial suffering reaches Rome and tests the promise of justice under Trajan.",
+      "context": [
+        "Pliny and Tacitus represent the provincials of Africa",
+        "The case against Marius Priscus in the Senate",
+        "Justice and imperial authority under Trajan"
+      ],
+      "sections": [],
+      "videoUrl": null,
+      "source": "Pliny, Letters 2.11–12 and 10.3a–3b"
+    },
+    {
+      "id": "05",
+      "number": 5,
+      "title": "Trajan & Decebalus",
+      "subtitle": "Across the Danube",
+      "period": "AD 101–106",
+      "kind": "episode",
+      "status": "Proposed",
+      "statusDetail": "Working episode brief added on 20 November 2026. Full research and narration have not yet been completed; the title and scope may develop with the evidence.",
+      "summary": "Across the Danube, Trajan confronts Decebalus in two wars that transform Dacia. Follow the rival rulers and the human cost behind Rome’s monuments to victory.",
+      "brief": "Across the Danube, Trajan confronts Decebalus in two wars that transform Dacia. Follow the rival rulers and the human cost behind Rome’s monuments to victory.",
+      "context": [
+        "The Dacian wars of AD 101–102 and 105–106",
+        "Trajan, Decebalus and the conquest of Dacia",
+        "The human cost behind the imperial victory"
+      ],
+      "sections": [],
+      "videoUrl": null,
+      "source": "Cassius Dio, Roman History 68.6–14; Trajan’s Column as an imperial representation, not a neutral eyewitness record"
+    },
+    {
+      "id": "06",
+      "number": 6,
+      "title": "Pliny the Younger",
+      "subtitle": "Letters from Bithynia",
+      "period": "c. AD 110–112",
+      "kind": "episode",
+      "status": "Proposed",
+      "statusDetail": "Working episode brief added on 20 November 2026. Full research and narration have not yet been completed; the title and scope may develop with the evidence.",
+      "summary": "In Bithynia, Pliny writes to Trajan about unfinished buildings, local disputes and accused Christians. Their surviving letters reveal the everyday decisions through which an empire governed people’s lives.",
+      "brief": "In Bithynia, Pliny writes to Trajan about unfinished buildings, local disputes and accused Christians. Their surviving letters reveal the everyday decisions through which an empire governed people’s lives.",
+      "context": [
+        "Pliny’s provincial administration and letters to Trajan",
+        "Public works, local communities and imperial decisions",
+        "Accused Christians and the limits of official testimony"
+      ],
+      "sections": [],
+      "videoUrl": null,
+      "source": "Pliny, Letters 10, especially 10.33–34, 37–40 and 96–97; the exact dating of the governorship requires further checking"
+    },
+    {
+      "id": "07",
+      "number": 7,
+      "title": "Trajan",
+      "subtitle": "The Last Campaign",
+      "period": "AD 113–117",
+      "kind": "episode",
+      "status": "Proposed",
+      "statusDetail": "Working episode brief added on 20 November 2026. Full research and narration have not yet been completed; the title and scope may develop with the evidence.",
+      "summary": "Trajan carries Roman power east into Armenia and Mesopotamia. Victory gives way to revolt, illness and a journey home that ends before he reaches Rome.",
+      "brief": "Trajan carries Roman power east into Armenia and Mesopotamia. Victory gives way to revolt, illness and a journey home that ends before he reaches Rome.",
+      "context": [
+        "The eastern expedition and conquest",
+        "Revolt, overstretched power and illness",
+        "Trajan’s death and the transition to Hadrian"
+      ],
+      "sections": [],
+      "videoUrl": null,
+      "source": "Cassius Dio, Roman History 68.17–33"
+    },
+    {
+      "id": "08",
+      "number": 8,
+      "title": "Hadrian",
+      "subtitle": "An Empire to Hold",
+      "period": "AD 117–122",
+      "kind": "episode",
+      "status": "Proposed",
+      "statusDetail": "Working episode brief added on 20 November 2026. Full research and narration have not yet been completed; the title and scope may develop with the evidence.",
+      "summary": "Hadrian inherits Trajan’s empire amid uncertainty over the succession. Follow his efforts to secure his rule and hold its frontiers, ending in Britain as work begins on his wall.",
+      "brief": "Hadrian inherits Trajan’s empire amid uncertainty over the succession. Follow his efforts to secure his rule and hold its frontiers, ending in Britain as work begins on his wall.",
+      "context": [
+        "The disputed circumstances of Hadrian’s succession",
+        "Consolidation and frontier policy",
+        "Britain and the beginning of Hadrian’s Wall in AD 122"
+      ],
+      "sections": [],
+      "videoUrl": null,
+      "source": "Cassius Dio, Roman History 69.1–2 and 9; English Heritage, Hadrian’s Wall historical guidance"
+    },
+    {
+      "id": "09",
+      "number": 9,
+      "title": "Hadrian & Antinous",
+      "subtitle": "A Life Remembered",
+      "period": "AD 130",
+      "kind": "episode",
+      "status": "Proposed",
+      "statusDetail": "Working episode brief added on 20 November 2026. Full research and narration have not yet been completed; the title and scope may develop with the evidence.",
+      "summary": "Hadrian’s journey through Egypt is broken by the death of Antinous in the Nile. Follow the mourning and commemorations that turn a young companion into an enduring presence across the empire.",
+      "brief": "Hadrian’s journey through Egypt is broken by the death of Antinous in the Nile. Follow the mourning and commemorations that turn a young companion into an enduring presence across the empire.",
+      "context": [
+        "Hadrian’s Egyptian journey",
+        "The death of Antinous and the uncertainty surrounding it",
+        "Antinoopolis and the spread of commemorations"
+      ],
+      "sections": [],
+      "videoUrl": null,
+      "source": "Cassius Dio, Roman History 69.11; conflicting explanations for Antinous’s death must remain unproven"
+    },
+    {
+      "id": "10",
+      "number": 10,
+      "title": "Hadrian",
+      "subtitle": "The Next Generation",
+      "period": "AD 136–138",
+      "kind": "episode",
+      "status": "Proposed",
+      "statusDetail": "Working episode brief added on 20 November 2026. Full research and narration have not yet been completed; the title and scope may develop with the evidence.",
+      "summary": "As Hadrian’s health fails and his first chosen heir dies, succession becomes urgent again. The adoption of Antoninus prepares the next generation and brings the story back to Rome’s search for continuity.",
+      "brief": "As Hadrian’s health fails and his first chosen heir dies, succession becomes urgent again. The adoption of Antoninus prepares the next generation and brings the story back to Rome’s search for continuity.",
+      "context": [
+        "Lucius Aelius and the failure of the first succession plan",
+        "The adoption of Antoninus",
+        "Marcus Aurelius and Lucius Verus as the next generation"
+      ],
+      "sections": [],
+      "videoUrl": null,
+      "source": "Cassius Dio, Roman History 69.20–23; dates and adoption sequence to be cross-checked during full research"
     }
   ],
   "ideas": [
-    {
-      "title": "Pliny the Younger",
-      "sub": "Witness to a changing Rome",
-      "description": "A potential character-led story drawing on Pliny's writings, senatorial life and his contemporaries. Not assigned an episode number."
-    },
-    {
-      "title": "The Trial of Marius Priscus",
-      "sub": "Justice in the Senate",
-      "description": "An earlier proposed subject centred on a documented provincial corruption trial. Its eventual narrative placement is undecided."
-    },
     {
       "title": "Beyond Trajan",
       "sub": "Lives across the empire",
