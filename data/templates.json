@@ -1,0 +1,217 @@
+{
+  "updated": "2026-11-20",
+  "description": "Reusable production wizard templates. {{field}} tokens are filled from user inputs; an empty field becomes [insert ...] placeholder.",
+  "fields": {
+    "emperor": {
+      "label": "Main character / emperor",
+      "hint": "Trajan, Nerva, a servant, a senator...",
+      "placeholder": "[insert emperor]"
+    },
+    "year": {
+      "label": "Year or date range",
+      "hint": "e.g. AD 97–98",
+      "placeholder": "[insert year]"
+    },
+    "location": {
+      "label": "Where it happens",
+      "hint": "e.g. imperial palace, Rome",
+      "placeholder": "[insert location]"
+    },
+    "focus": {
+      "label": "What happens in this scene / task",
+      "hint": "e.g. Nerva chooses his successor",
+      "placeholder": "[insert event]"
+    },
+    "people": {
+      "label": "Other characters",
+      "hint": "e.g. Trajan, Praetorian officers",
+      "placeholder": "[insert other characters]"
+    },
+    "continuity": {
+      "label": "Where the previous scene ended",
+      "hint": "Describe the last action or sentence to continue",
+      "placeholder": "[insert previous-scene continuity]"
+    },
+    "section": {
+      "label": "Recording section",
+      "hint": "e.g. Section 4 of 4",
+      "placeholder": "[insert section]"
+    },
+    "length": {
+      "label": "Target length / count",
+      "hint": "e.g. 11–13 minutes, 10 images",
+      "placeholder": "[insert duration or quantity]"
+    },
+    "visual": {
+      "label": "Visual reference / appearance",
+      "hint": "e.g. use approved Nerva character design",
+      "placeholder": "[insert character reference]"
+    },
+    "mood": {
+      "label": "Mood and lighting",
+      "hint": "e.g. restrained tension, soft afternoon light",
+      "placeholder": "[insert atmosphere]"
+    },
+    "sources": {
+      "label": "Historical facts / source notes",
+      "hint": "e.g. Cassius Dio, Pliny, verified timeline",
+      "placeholder": "[insert approved historical sources]"
+    },
+    "extra": {
+      "label": "Additional directions",
+      "hint": "Anything else to include or avoid",
+      "placeholder": "[insert special instructions]"
+    }
+  },
+  "templates": [
+    {
+      "id": "develop",
+      "group": "Plan",
+      "title": "Research the next episode",
+      "description": "Turn a historical figure or event into a sourced, character-led episode concept.",
+      "fields": [
+        "emperor",
+        "year",
+        "focus",
+        "location",
+        "people",
+        "sources",
+        "extra"
+      ],
+      "body": "You are producing material for VENIVIDIVICI — Voices History Left Behind, the immersive historical storytelling series about ancient Rome. Follow the four authoritative project documents and preserve the established continuity. Tell history through people engaged in plausible activities, not an encyclopedia-style chronology. Respect historical evidence; do not invent significant events, authentic historical quotations, or eyewitness testimony.\n\nDevelop an evidence-led episode concept.\nMain historical figure: {{emperor}}\nPeriod: {{year}}\nCentral event or human dilemma: {{focus}}\nLikely setting: {{location}}\nOther people involved: {{people}}\nAvailable evidence and research notes: {{sources}}\n\nResearch the event before outlining it. Identify documented actions, daily routines, consequences, character relationships, geographical constraints, competing ancient accounts and meaningful uncertainties. Use primary sources and modern scholarship where accessible, giving passage identifiers when actually checked.\n\nPropose a continuous scene-based narrative that begins with a person doing something tangible. Historical background must be motivated by an object, observation, interaction, memory or relationship in the unfolding scene; return naturally to the person and action after each digression.\n\nKeep a separate evidence register distinguishing securely attested events, disputed reports, scholarly interpretation, atmospheric reconstruction and invented minor-character viewpoint. Do not assign a fictitious character a decisive historical role.\n\nDeliver (1) a concise evidence register, (2) an immersive narrative story spine, and (3) open questions requiring source checks. Do not write the narration yet.\nAdditional direction: {{extra}}"
+    },
+    {
+      "id": "outline",
+      "group": "Plan",
+      "title": "Create the episode outline",
+      "description": "Plan one continuous story and split it into practical recording segments.",
+      "fields": [
+        "emperor",
+        "year",
+        "focus",
+        "location",
+        "people",
+        "length",
+        "continuity",
+        "extra"
+      ],
+      "body": "You are producing material for VENIVIDIVICI — Voices History Left Behind, the immersive historical storytelling series about ancient Rome. Follow the four authoritative project documents and preserve the established continuity. Tell history through people engaged in plausible activities, not an encyclopedia-style chronology. Respect historical evidence; do not invent significant events, authentic historical quotations, or eyewitness testimony.\n\nOutline the next episode of VENIVIDIVICI.\nCentral person: {{emperor}}\nPeriod: {{year}}\nThe main developing situation: {{focus}}\nStarting location: {{location}}\nOther people: {{people}}\nTotal expected runtime: {{length}}\nContinuity with preceding episode: {{continuity}}\n\nDevelop a single connected narrative, beginning with someone doing something historically plausible. Describe the central activity, the historical experiences naturally connected to it, the people encountered, and the scenes that gradually change the situation.\n\nProvide an overarching story spine, followed by production recording sections with working titles, approximate narration duration, scene focus, historically grounded events, natural entry and exit transitions, and source uncertainties to resolve. Recording sections are technical divisions, not chapter-like changes of subject.\n\nDo not write a biography divided into childhood, career, wars and death. Avoid artificial cliffhangers, repetitive exposition or unsupported events.\nAdditional direction: {{extra}}"
+    },
+    {
+      "id": "narration",
+      "group": "Write",
+      "title": "Generate narration for a section",
+      "description": "Create the next ElevenLabs-ready narration segment using existing research and continuity.",
+      "fields": [
+        "emperor",
+        "year",
+        "section",
+        "length",
+        "location",
+        "focus",
+        "people",
+        "continuity",
+        "sources",
+        "extra"
+      ],
+      "body": "You are producing material for VENIVIDIVICI — Voices History Left Behind, the immersive historical storytelling series about ancient Rome. Follow the four authoritative project documents and preserve the established continuity. Tell history through people engaged in plausible activities, not an encyclopedia-style chronology. Respect historical evidence; do not invent significant events, authentic historical quotations, or eyewitness testimony.\n\nWrite the next section of the approved episode narration.\nHistorical subject: {{emperor}}\nPeriod: {{year}}\nSection: {{section}}\nTarget spoken runtime: {{length}}\nCurrent setting: {{location}}\nCharacter's immediate experience: {{focus}}\nOther people relevant to this scene: {{people}}\nEarlier narration ends with: {{continuity}}\nApproved research or evidence: {{sources}}\n\nNarrate in warm, measured, natural British documentary English, close to the people experiencing events. Continue the ongoing action directly without an introductory recap. Reveal background organically through someone's task, concern, observation, relationship or experience, and return gently to the live scene.\n\nUse intimate third-person storytelling; vary paragraph lengths and sentence rhythm. Do not address rhetorical questions to the audience or impose topic headings. Major historical actions, events, named figures and outcomes must be faithful to the evidence. Plausible fictional minor-character thoughts and incidental actions may make the setting inhabited, but may not change documented events or masquerade as eyewitness testimony.\n\nOutput ONLY the words to be spoken in ElevenLabs, as continuous prose. No stage directions, research notes, sources, citations, shot list, timestamps or image prompts in the narration. If a fact requires checking, keep it in separate research notes rather than guessing.\nFurther requirements: {{extra}}"
+    },
+    {
+      "id": "continue",
+      "group": "Write",
+      "title": "Continue existing dialogue seamlessly",
+      "description": "Preserve tone and action when continuing a narration already in progress.",
+      "fields": [
+        "emperor",
+        "year",
+        "section",
+        "length",
+        "continuity",
+        "focus",
+        "people",
+        "extra"
+      ],
+      "body": "You are producing material for VENIVIDIVICI — Voices History Left Behind, the immersive historical storytelling series about ancient Rome. Follow the four authoritative project documents and preserve the established continuity. Tell history through people engaged in plausible activities, not an encyclopedia-style chronology. Respect historical evidence; do not invent significant events, authentic historical quotations, or eyewitness testimony.\n\nContinue the existing VENIVIDIVICI narration, maintaining identical tone and seamless continuity.\nCentral figure: {{emperor}}\nPeriod: {{year}}\nPart: {{section}}\nApproximate duration: {{length}}\nThe previous scene ends: {{continuity}}\nNext documented development: {{focus}}\nRelevant people: {{people}}\n\nContinue from the last physical action or observed detail, rather than introducing the section anew. Let historical context appear only when a character's ongoing activity makes it matter. Follow established name pronunciation, character appearance, relationships, time and geography.\n\nDo not repeat existing narration, add academic framing, invent historical dialogue, break into topic chapters or invent consequential incidents. Return naturally from earlier events to the action we left.\n\nProvide spoken words only, in ElevenLabs-ready prose.\nAdditional directions: {{extra}}"
+    },
+    {
+      "id": "factcheck",
+      "group": "Review",
+      "title": "Historical fact-check & continuity review",
+      "description": "Separate verified events from reconstruction and detect errors before approving narration.",
+      "fields": [
+        "emperor",
+        "year",
+        "focus",
+        "sources",
+        "continuity",
+        "extra"
+      ],
+      "body": "Review the provided VENIVIDIVICI narration or outline for historical accuracy and continuity.\nSubject: {{emperor}}\nPeriod: {{year}}\nClaim or scene focus: {{focus}}\nAvailable source register: {{sources}}\nContinuity to check against: {{continuity}}\n\nFor each substantial historical claim, identify whether it is (A) securely attested, (B) a disputed ancient account, (C) modern scholarly interpretation, (D) plausible atmospheric reconstruction or (E) invented minor-character perspective. Flag anachronistic buildings, titles, costumes, language, dates, geography and relationships.\n\nVerify direct quotations against the actual ancient passage and distinguish translation from paraphrase; never invent citations or claim sources were consulted when they were not. Identify any fictional minor character improperly given privileged information or an important historical intervention.\n\nGive a prioritized correction table with the exact wording to reconsider, what is wrong or uncertain, evidence needed and a historically responsible rewrite. Preserve the story's immersive narrative method. Do not automatically turn the narration into an academic lecture.\nAdditional checks: {{extra}}"
+    },
+    {
+      "id": "image",
+      "group": "Visuals",
+      "title": "Create a single scene illustration",
+      "description": "One atmospheric, historically accurate painterly image with recurring-character consistency.",
+      "fields": [
+        "emperor",
+        "year",
+        "location",
+        "focus",
+        "people",
+        "mood",
+        "visual",
+        "extra"
+      ],
+      "body": "Create exactly ONE separate 16:9 landscape illustration for VENIVIDIVICI — Voices History Left Behind.\n\nDate and setting: {{year}}, {{location}}\nMain person: {{emperor}}\nAction to depict: {{focus}}\nOther figures: {{people}}\nAtmosphere and lighting: {{mood}}\nApproved visual references / character identity: {{visual}}\n\nMatch the established painterly visual identity: sophisticated Roman historical painting, fresco influence, refined reconstruction illustration, naturalistic painted faces, fine visible texture, historically plausible anatomy and materials, muted gold, ochre, terracotta, marble ivory, deep red, earthy greens and subdued blue.\n\nMaintain strict date-specific accuracy for Roman clothing, hairstyles, buildings, furnishings, weapons and daily objects. Preserve likenesses from the supplied reference images; references set the visual identity, not necessarily the composition. Compose a single coherent full-frame scene.\n\nNO glossy CGI, photorealistic film still, fantasy, Hollywood costume, modern object, later Roman monument not yet built, collage, split panels, watermarks, logos, captions, readable words or border. Avoid invented specifics presented as known facts.\n\nFurther details: {{extra}}"
+    },
+    {
+      "id": "shotlist",
+      "group": "Visuals",
+      "title": "Plan images from an existing script",
+      "description": "Create a coded shot list and consistent prompts for a section of narration.",
+      "fields": [
+        "emperor",
+        "year",
+        "section",
+        "length",
+        "location",
+        "visual",
+        "extra"
+      ],
+      "body": "Develop a chronological visual production plan for the attached VENIVIDIVICI narration.\nEpisode subject: {{emperor}}\nPeriod: {{year}}\nNarration section: {{section}}\nImages requested: {{length}}\nPrimary setting: {{location}}\nApproved art / recurring figure reference: {{visual}}\n\nRead the full narration and divide it into meaningful visual beats. Use atmospheric painted historical reconstructions rather than literal illustration of every sentence. For each image specify a unique code, approximate narration placement, scene description, 16:9 standalone generation prompt and any historical/character continuity constraints.\n\nMatch the established traditional history-painting visual style with authentic first-century Roman materials as appropriate to the date. Maintain consistent recurring appearances, clothing and architecture, and avoid all later monuments, modern features, watermarks and text.\n\nGroup the results in batches of ten. Reused frames, if useful, must be clearly identified rather than unnecessarily regenerated. Separate factual reconstruction notes from image prompts. Do not substitute your own narration.\nOther production requirements: {{extra}}"
+    },
+    {
+      "id": "animate",
+      "group": "Visuals",
+      "title": "Animate an existing artwork subtly",
+      "description": "Generate image-to-video instructions without losing the illustration's painterly style.",
+      "fields": [
+        "emperor",
+        "year",
+        "location",
+        "focus",
+        "mood",
+        "visual",
+        "length",
+        "extra"
+      ],
+      "body": "Write a concise image-to-video animation prompt for an existing VENIVIDIVICI historical illustration.\n\nSubject: {{emperor}}\nPeriod: {{year}}\nSetting: {{location}}\nScene activity: {{focus}}\nAtmosphere: {{mood}}\nImage / character reference: {{visual}}\nShot duration: {{length}}\n\nPreserve the original image's layout, facial features, architecture, painting style and historical period. Animate only plausible gentle environment motion: very slow camera push or lateral pan, slight parallax, drifting smoke, flickering oil flame, shifting cloth, subtle water, soft clouds or natural light changes where relevant.\n\nAvoid camera shake, rapid edits, photorealistic conversion, invented objects, altered faces, extreme character movement, modern effects and dramatic exaggeration. Produce one cohesive motion prompt, including explicit negative constraints.\nAdditional details: {{extra}}"
+    },
+    {
+      "id": "publish",
+      "group": "Publish",
+      "title": "Prepare YouTube episode materials",
+      "description": "Generate title options, description, credits and source notes once an episode is ready.",
+      "fields": [
+        "emperor",
+        "year",
+        "focus",
+        "length",
+        "sources",
+        "extra"
+      ],
+      "body": "Prepare publication materials for a completed episode of VENIVIDIVICI — Voices History Left Behind.\n\nHistorical subject: {{emperor}}\nPeriod: {{year}}\nMain narrative: {{focus}}\nFinal duration: {{length}}\nVerified sources used: {{sources}}\n\nProvide (1) five accurate YouTube title options suitable for this historically researched documentary series; (2) a concise spoiler-light synopsis and longer description; (3) a properly checked source list from sources actually consulted; (4) restrained, non-clickbait chapter suggestions if appropriate; (5) credits and necessary AI-use and rights disclosures; (6) relevant but selective search tags.\n\nPreserve the dignity, immersive character-led tone and avoid unsupported sensational claims. Do not invent exact citations, production credits, video links, or other publication facts. Flag missing information explicitly.\nAdditional direction: {{extra}}"
+    }
+  ]
+}
