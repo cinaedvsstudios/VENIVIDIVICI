@@ -310,32 +310,24 @@
   /* Existing compact mobile navigation remains interactive and accessible. */
   :root { --dome-height: 118px; }
 }
-/* Episode catalogue: pages of four, with controls outside the clipping window. */
-.episode-carousel{width:100%;max-width:1400px;margin:20px auto 28px;text-align:left}
-.episode-carousel-home{width:calc(100% - 40px);margin:18px auto 24px}
-.episode-carousel-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 62px 10px;font:600 .875rem/1.5 var(--roman);letter-spacing:.06em;color:var(--gold-dark)}
-.episode-carousel-range{font-family:var(--small);font-size:.875rem;letter-spacing:0;text-align:right}
+/* Episode catalogue: four compact cards, only on the Episodes screen. */
+.episode-catalogue{max-width:1470px;padding:22px 24px 40px}
+.episode-carousel{width:100%;margin:0 auto;text-align:left}
+.episode-carousel-heading{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .episode-carousel-controls{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:12px}
 .episode-carousel-window{overflow:hidden;min-width:0;margin:4px}
 .episode-carousel-track{display:flex;align-items:stretch;transition:transform 350ms ease}
-.episode-carousel-page{flex:0 0 100%;min-width:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
-.episode-card{display:flex;flex-direction:column;align-items:center;min-width:0;padding:18px 14px 16px;text-align:center;border:1px solid #c9a875;border-radius:10px;background:linear-gradient(170deg,#fffaf0e6,#efdfc9b3);color:var(--ink);box-shadow:0 3px 8px #5a33100d}
+.episode-carousel-page{flex:0 0 100%;min-width:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.episode-card{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;padding:24px 14px;min-height:238px;text-align:center;border:1px solid #c9a875;border-radius:10px;background:linear-gradient(170deg,#fffaf0e6,#efdfc9b3);color:var(--ink)}
 .episode-card:hover{border-color:var(--gold-dark);color:var(--ink);background:#fff6e8}
 .episode-card:focus-visible{outline-offset:-4px}
-.episode-card.is-current{border:2px solid var(--gold-dark);padding:17px 13px 15px}
-.episode-card .episode-seal{flex-shrink:0;width:48px;height:48px;font-size:26px;margin:10px 0 12px}
-.episode-card.is-current .episode-seal{background:var(--crimson);color:#fff1d9}
-.episode-card-number{font:600 .875rem/1.4 var(--roman);color:var(--gold-dark);letter-spacing:.07em}
-.episode-card h2{font:600 1.1rem/1.3 var(--roman);margin:0 0 6px;overflow-wrap:anywhere}
-.episode-card-subtitle{font:italic 1.125rem/1.3 var(--serif);color:var(--crimson);margin-bottom:8px}
+.episode-card .episode-seal{flex-shrink:0;width:58px;height:58px;font-size:30px;margin:0 0 16px}
+.episode-card h2{font:600 1.125rem/1.3 var(--roman);margin:0 0 8px;overflow-wrap:anywhere}
+.episode-card-subtitle{font:italic 1.25rem/1.3 var(--serif);color:var(--crimson);margin-bottom:10px}
 .episode-card-period{font:.875rem/1.5 var(--small);color:var(--muted)}
-.episode-card p{font:1.125rem/1.4 var(--serif);margin:12px 0 16px}
-.episode-card-status{font:600 .875rem/1.4 var(--serif);color:var(--gold-dark);margin-top:auto}
 .episode-carousel-arrow{display:flex;justify-content:center;align-items:center;width:44px;height:44px;border:1px solid var(--gold-dark);border-radius:50%;background:linear-gradient(#fff7e6,#e6cda8);color:var(--ink);font:36px/1 Georgia,serif;padding:0 0 4px}
 .episode-carousel-arrow:hover:not(:disabled){background:#f8e4bd;border-color:var(--crimson);color:var(--crimson)}
 .episode-carousel-arrow:disabled{opacity:.35;cursor:default}
-@media(max-width:900px){.episode-carousel-page{gap:10px}.episode-card{padding:14px 10px}.episode-card.is-current{padding:13px 9px}.episode-card h2{font-size:1rem}}
-@media(max-width:760px){.episode-carousel-home{width:calc(100% - 20px)}.episode-carousel-heading{padding:0 48px 8px;gap:8px}.episode-carousel-controls{grid-template-columns:44px minmax(0,1fr) 44px;gap:2px}.episode-carousel-page{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.episode-card{padding:14px 10px}.episode-card p{font-size:1rem}.episode-card .episode-seal{width:40px;height:40px;font-size:23px;margin:6px 0 10px}}
-@media(max-width:420px){.episode-carousel-home{width:100%}.episode-carousel-heading{padding-left:42px;padding-right:42px;font-size:.75rem}.episode-carousel-range{font-size:.75rem}.episode-carousel-controls{grid-template-columns:36px minmax(0,1fr) 36px;gap:0}.episode-carousel-arrow{width:36px;height:44px}.episode-carousel-page{gap:6px}.episode-card{padding:12px 7px}.episode-card.is-current{padding:11px 6px}.episode-card h2{font-size:.875rem}.episode-card-number{font-size:.75rem}.episode-card-subtitle{font-size:1rem}.episode-card-period{font-size:.75rem}.episode-card-status{font-size:.8125rem}}
-@media(max-width:760px){.episode-carousel-heading{padding-left:4px;padding-right:4px}.episode-carousel-window{grid-column:1/-1;grid-row:1}.episode-carousel-arrow{grid-row:2;margin-top:8px}.episode-carousel-arrow:last-child{grid-column:3}.episode-carousel-page{gap:12px}.episode-card h2{font-size:1rem}.episode-card-number,.episode-card-period,.episode-card-status{font-size:.875rem}.episode-card p{line-height:1.4}}
+@media(max-width:900px){.episode-carousel-page{gap:10px}.episode-card{padding:20px 10px}.episode-card h2{font-size:1rem}}
+@media(max-width:760px){.episode-catalogue{padding:16px 12px 32px}.episode-carousel-controls{grid-template-columns:44px minmax(0,1fr) 44px;gap:2px}.episode-carousel-window{grid-column:1/-1;grid-row:1}.episode-carousel-arrow{grid-row:2;margin-top:8px}.episode-carousel-arrow:last-child{grid-column:3}.episode-carousel-page{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.episode-card{padding:20px 10px;min-height:218px}.episode-card-subtitle{font-size:1.125rem}.episode-card .episode-seal{width:48px;height:48px;font-size:26px;margin-bottom:12px}}
 @media(prefers-reduced-motion:reduce){.episode-carousel-track{transition:none}}

@@ -34,15 +34,15 @@ function shell(){
 const header=(sup,title,subtitle,description='')=>'<div class="page-overline">'+sup+'</div><h1 class="page-title">'+title+'</h1><div class="page-subtitle">'+subtitle+'</div>'+(description?'<p class="page-description">'+description+'</p>':'')+'<div class="page-underline"></div>';
 const pill=(label,href,alternate=false)=>'<a class="'+(alternate?'secondary-cta':'primary-cta')+'" href="'+href+'">'+label+'<span aria-hidden="true" class="arrow">→</span></a>';
 // Four episodes per page; the last page contains the remaining two.
-function episodeCarousel(episodes, active='02', compact=false){
+function episodeCarousel(episodes, active='01'){
  const initial=Math.max(0,Math.floor(episodes.findIndex(ep=>ep.id===active)/4));
  const pages=[];
  for(let i=0;i<episodes.length;i+=4){
   const pageIndex=i/4;
-  const cards=episodes.slice(i,i+4).map(ep=>'<a class="episode-card'+(ep.id===active?' is-current':'')+'" href="episode.html?id='+ep.id+'"'+(ep.id===active?' aria-current="true"':'')+'><span class="episode-card-number">EPISODE '+roman(ep.number)+'</span><span class="episode-seal" aria-hidden="true">'+roman(ep.number)+'</span><h2>'+esc(ep.title)+'</h2><span class="episode-card-subtitle">'+esc(ep.subtitle)+'</span><span class="episode-card-period">'+esc(ep.period)+'</span><p>'+esc(ep.brief||ep.summary)+'</p><span class="episode-card-status">'+esc(ep.id==='01'?'Narration completed':ep.id==='02'?'3 of 4 sections drafted':'Proposed')+'</span></a>').join('');
+  const cards=episodes.slice(i,i+4).map(ep=>'<a class="episode-card" href="episode.html?id='+ep.id+'" aria-label="Episode '+ep.number+': '+esc(ep.title)+' — '+esc(ep.subtitle)+', '+esc(ep.period)+'"><span class="episode-seal" aria-hidden="true">'+roman(ep.number)+'</span><h2>'+esc(ep.title)+'</h2><span class="episode-card-subtitle">'+esc(ep.subtitle)+'</span><span class="episode-card-period">'+esc(ep.period)+'</span></a>').join('');
   pages.push('<div class="episode-carousel-page" role="group" aria-label="Episodes '+(i+1)+' to '+Math.min(i+4,episodes.length)+'"'+(pageIndex===initial?'':' inert aria-hidden="true"')+'>'+cards+'</div>');
  }
- return '<section class="episode-carousel'+(compact?' episode-carousel-home':'')+'" aria-label="Episode catalogue" aria-roledescription="carousel" data-episode-carousel data-page="'+initial+'" data-count="'+episodes.length+'"><div class="episode-carousel-heading"><span>EPISODES</span><span class="episode-carousel-range" aria-live="polite" aria-atomic="true">Episodes '+(initial*4+1)+'–'+Math.min(initial*4+4,episodes.length)+' of '+episodes.length+'</span></div><div class="episode-carousel-controls"><button type="button" class="episode-carousel-arrow" data-step="-1" aria-label="Previous four episodes" title="Previous four episodes"'+(initial===0?' disabled':'')+'><span aria-hidden="true">‹</span></button><div class="episode-carousel-window"><div class="episode-carousel-track" style="transform:translateX(-'+(initial*100)+'%)">'+pages.join('')+'</div></div><button type="button" class="episode-carousel-arrow" data-step="1" aria-label="Next four episodes" title="Next four episodes"'+(initial===pages.length-1?' disabled':'')+'><span aria-hidden="true">›</span></button></div></section>';
+ return '<section class="episode-carousel" aria-label="Episode catalogue" aria-roledescription="carousel" data-episode-carousel data-page="'+initial+'" data-count="'+episodes.length+'"><div class="episode-carousel-heading"><span class="episode-carousel-range" aria-live="polite" aria-atomic="true">Episodes '+(initial*4+1)+'–'+Math.min(initial*4+4,episodes.length)+' of '+episodes.length+'</span></div><div class="episode-carousel-controls"><button type="button" class="episode-carousel-arrow" data-step="-1" aria-label="Previous four episodes" title="Previous four episodes"'+(initial===0?' disabled':'')+'><span aria-hidden="true">‹</span></button><div class="episode-carousel-window"><div class="episode-carousel-track" style="transform:translateX(-'+(initial*100)+'%)">'+pages.join('')+'</div></div><button type="button" class="episode-carousel-arrow" data-step="1" aria-label="Next four episodes" title="Next four episodes"'+(initial===pages.length-1?' disabled':'')+'><span aria-hidden="true">›</span></button></div></section>';
 }
 function initEpisodeCarousels(){
  document.querySelectorAll('[data-episode-carousel]').forEach(carousel=>{
@@ -68,14 +68,17 @@ function initEpisodeCarousels(){
   });
  });
 }
+function ribbon(episodes,active='02'){
+ return '<nav class="episode-ribbon" aria-label="Episode timeline"><span class="ribbon-line"></span><span class="ribbon-text">EPISODES</span>'+episodes.map(ep=>'<a class="episode-point'+(ep.id===active?' is-current':'')+'" href="episode.html?id='+ep.id+'" aria-label="Episode '+ep.number+': '+esc(ep.title)+'"><span class="episode-seal">'+roman(ep.number)+'</span><span class="episode-point-title">'+esc(ep.title)+'</span><span class="episode-point-status">'+(ep.id==='01'?'Written':ep.id==='02'?'3 of 4 drafted':'Proposed')+'</span></a>').join('')+'<span class="ribbon-trail">❧</span></nav>';
+}
 function renderHome(data){
  document.title='VENIVIDIVICI — Dashboard';
- $('app-main').innerHTML='<section class="portal-landing"><div class="landing-copy"><div class="overline">NEXT TASK</div><h1 class="landing-title">A SON FOR ROME</h1><div class="landing-subtitle">Nerva · Episode II · Section IV</div><div class="landing-meta">3 / 4 NARRATION SECTIONS DRAFTED</div>'+pill('CONTINUE WRITING','prompts.html?quick=nerva')+'<div class="landing-links"><a href="episode.html?id=02">Original Nerva scripts</a></div></div>'+episodeCarousel(data.episodes,'02',true)+'</section>';
+ $('app-main').innerHTML='<section class="portal-landing"><div class="landing-copy"><div class="overline">NEXT TASK</div><h1 class="landing-title">A SON FOR ROME</h1><div class="landing-subtitle">Nerva · Episode II · Section IV</div><div class="landing-meta">3 / 4 NARRATION SECTIONS DRAFTED</div>'+pill('CONTINUE WRITING','prompts.html?quick=nerva')+'<div class="landing-links"><a href="episode.html?id=02">Original Nerva scripts</a></div></div>'+ribbon(data.episodes.slice(0,3),'02')+'</section>';
 }
 function renderEpisodes(data){
- let id=qs.get('id')||'02';const ep=data.episodes.find(p=>p.id===id)||data.episodes[1];
+ const selected=qs.get('id')||'01';
  document.title='Episodes — VENIVIDIVICI';
- $('app-main').innerHTML='<section class="page-content utility-content"><h1 class="utility-title">EPISODES</h1>'+episodeCarousel(data.episodes,ep.id)+'<div class="feature-story"><div class="portrait-arch"><img class="'+imgClass(ep)+'" src="'+originalImage(ep)+'" alt="'+esc(ep.title)+' original project artwork"></div><div class="feature-copy"><div class="page-overline">EPISODE '+roman(ep.number)+' · '+esc(ep.period)+'</div><h2>'+esc(ep.title)+'</h2><div class="page-subtitle">'+esc(ep.subtitle)+'</div><p>'+esc(ep.summary)+'</p><div class="feature-status">'+esc(ep.status)+'</div><div class="utility-action">'+pill('OPEN DOSSIER','episode.html?id='+ep.id)+'</div></div></div></section>';
+ $('app-main').innerHTML='<section class="page-content episode-catalogue" aria-label="Episodes">'+episodeCarousel(data.episodes,selected)+'</section>';
 }
 function renderVideos(data){
  document.title='Videos — VENIVIDIVICI';
