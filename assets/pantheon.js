@@ -11,7 +11,7 @@ const navItems=[
  {key:'home',label:'Home',href:'index.html'},
  {key:'episodes',label:'Episodes',href:'index.html?view=episodes'},
  {key:'videos',label:'Videos',href:'index.html?view=videos'},
- {key:'wizard',label:'Prompt Wizard',href:'prompts.html'},
+ {key:'wizard',label:'Prompts',href:'prompts.html'},
  {key:'links',label:'Links',href:'index.html?view=links'}
 ];
 const iconPaths={
@@ -27,10 +27,8 @@ const roman=n=>R[n]||String(n);
 const originalImage=ep=>ep.id==='01'?'assets/images/domitian-thumb.webp':ep.id==='02'?'assets/images/nerva-portrait.webp':'assets/images/logo-columns.webp';
 const imgClass=ep=>ep.id==='03'?'logo-image':'';
 function shell(){
- const headerLinks=navItems.map(v=>{
-  return '<a class="dome-hit'+(view===v.key?' is-current':'')+'" data-key="'+v.key+'" href="'+v.href+'" title="'+v.label+'" aria-label="'+v.label+'"'+(view===v.key?' aria-current="page"':'')+'><img class="dome-medallion" src="assets/images/medallion-'+v.key+'.png" alt="" aria-hidden="true"><strong class="nav-label">'+v.label+'</strong></a>';
- }).join('');
- $('app-header').innerHTML='<div class="dome-shell"><img class="dome-image" src="assets/images/pantheon-clean-background.webp" alt="" aria-hidden="true"><a class="dome-title-home" href="index.html" aria-label="VENIVIDIVICI home"><img class="dome-title-image" src="assets/images/pantheon-title-transparent.png" alt="VENI VIDI VICI — Voices History Left Behind"></a><nav class="dome-nav" aria-label="Main site navigation">'+headerLinks+'</nav></div><div class="mobile-dome"><a href="index.html" aria-label="VENIVIDIVICI home"><img class="mobile-brand" src="assets/images/logo-small.webp" alt="VENI VIDI VICI — Voices History Left Behind"></a><nav aria-label="Mobile site navigation">'+navItems.map(v=>'<a href="'+v.href+'"'+(view===v.key?' class="active" aria-current="page"':'')+'>'+v.label+'</a>').join('')+'</nav></div>';
+ const headerLinks=navItems.map(v=>'<td class="dome-nav-cell"><a class="dome-hit'+(view===v.key?' is-current':'')+'" data-key="'+v.key+'" href="'+v.href+'" aria-label="'+v.label+'"'+(view===v.key?' aria-current="page"':'')+'><img class="dome-medallion" src="assets/images/nav-'+v.key+'.png" alt="" aria-hidden="true"><strong class="nav-label">'+v.label+'</strong></a></td>').join('');
+ $('app-header').innerHTML='<div class="dome-shell"><img class="dome-image" src="assets/images/pantheon-user-lossless.webp" alt="" aria-hidden="true"><a class="dome-title-home" href="index.html" aria-label="VENIVIDIVICI home"><img class="dome-title-image" src="assets/images/logo-small.webp" alt="VENI VIDI VICI — Voices History Left Behind"></a><nav class="dome-nav" aria-label="Main site navigation"><table class="dome-nav-table" role="presentation"><tbody><tr>'+headerLinks+'</tr></tbody></table></nav></div><div class="mobile-dome"><a href="index.html" aria-label="VENIVIDIVICI home"><img class="mobile-brand" src="assets/images/logo-small.webp" alt="VENI VIDI VICI — Voices History Left Behind"></a><nav aria-label="Mobile navigation">'+navItems.map(v=>'<a href="'+v.href+'"'+(view===v.key?' class="active" aria-current="page"':'')+'>'+v.label+'</a>').join('')+'</nav></div>';
  $('app-footer').innerHTML='';
 }
 const header=(sup,title,subtitle,description='')=>'<div class="page-overline">'+sup+'</div><h1 class="page-title">'+title+'</h1><div class="page-subtitle">'+subtitle+'</div>'+(description?'<p class="page-description">'+description+'</p>':'')+'<div class="page-underline"></div>';
@@ -70,7 +68,7 @@ function renderEpisode(data){
  }));
 }
 async function renderWizard(){
- document.title='Prompt Wizard — VENIVIDIVICI';
+ document.title='Prompts — VENIVIDIVICI';
  const data=await getJSON('data/templates.json');
  const groups=['Plan','Write','Review','Visuals','Publish'];
  let chosen='narration';
@@ -88,7 +86,7 @@ async function renderWizard(){
  const renderCategories=()=>groups.map(g=>'<button type="button" class="wizard-group'+(current().group===g?' active':'')+'" data-group="'+g+'">'+g+'</button>').join('');
  const renderTemplates=()=>data.templates.filter(t=>t.group===current().group).map(t=>'<button type="button" class="wizard-template'+(current().id===t.id?' active':'')+'" data-template="'+esc(t.id)+'">'+esc(t.title)+'</button>').join('');
  const renderFields=()=>current().fields.map(k=>{const f=data.fields[k];const wide=['continuity','sources','extra','focus','visual'].includes(k);return '<label class="wizard-field'+(wide?' wide':'')+'"><span class="field-label">'+esc(f.label)+'</span>'+(wide?'<textarea data-field="'+k+'" rows="2" placeholder="'+esc(f.hint)+'">'+esc(values[k]||'')+'</textarea>':'<input data-field="'+k+'" type="text" placeholder="'+esc(f.hint)+'" value="'+esc(values[k]||'')+'">')+'</label>'}).join('');
- $('app-main').innerHTML='<section class="page-content wizard-content"><h1 class="utility-title">PROMPT WIZARD</h1><div class="wizard-groups" id="wizard-groups">'+renderCategories()+'</div><div class="wizard-layout"><div class="wizard-editor"><div class="page-overline" style="text-align:left">I · CHOOSE A TASK</div><div class="wizard-templates" id="wizard-templates">'+renderTemplates()+'</div><p class="wizard-tool-description" id="wizard-description">'+esc(current().description)+'</p><form id="wizard-form"><div class="page-overline" style="text-align:left">II · ENTER THE DETAILS</div><div class="wizard-fields" id="wizard-fields">'+renderFields()+'</div><div class="wizard-form-actions"><button class="primary-cta" type="submit">GENERATE PROMPT <span class="arrow">→</span></button><button class="secondary-cta" type="button" id="wizard-clear">CLEAR FIELDS</button></div></form></div><div class="wizard-result"><div class="output-heading"><h2>III · YOUR PROMPT</h2><button class="secondary-cta" type="button" id="wizard-copy" disabled>COPY</button></div><textarea id="wizard-output" aria-label="Editable generated prompt" spellcheck="true" placeholder="Choose a task, enter the details and generate a reusable prompt…"></textarea></div></div></section>';
+ $('app-main').innerHTML='<section class="page-content wizard-content"><h1 class="utility-title">PROMPTS</h1><div class="wizard-groups" id="wizard-groups">'+renderCategories()+'</div><div class="wizard-layout"><div class="wizard-editor"><div class="page-overline" style="text-align:left">I · CHOOSE A TASK</div><div class="wizard-templates" id="wizard-templates">'+renderTemplates()+'</div><p class="wizard-tool-description" id="wizard-description">'+esc(current().description)+'</p><form id="wizard-form"><div class="page-overline" style="text-align:left">II · ENTER THE DETAILS</div><div class="wizard-fields" id="wizard-fields">'+renderFields()+'</div><div class="wizard-form-actions"><button class="primary-cta" type="submit">GENERATE PROMPT <span class="arrow">→</span></button><button class="secondary-cta" type="button" id="wizard-clear">CLEAR FIELDS</button></div></form></div><div class="wizard-result"><div class="output-heading"><h2>III · YOUR PROMPT</h2><button class="secondary-cta" type="button" id="wizard-copy" disabled>COPY</button></div><textarea id="wizard-output" aria-label="Editable generated prompt" spellcheck="true" placeholder="Choose a task, enter the details and generate a reusable prompt…"></textarea></div></div></section>';
  const redraw=()=>{$('wizard-groups').innerHTML=renderCategories();$('wizard-templates').innerHTML=renderTemplates();$('wizard-description').textContent=current().description;$('wizard-fields').innerHTML=renderFields()};
  const generate=()=>{$('wizard-output').value=fillTemplate();$('wizard-copy').disabled=false;store()};
  $('wizard-groups').addEventListener('click',e=>{const b=e.target.closest('[data-group]');if(!b)return;const t=data.templates.find(x=>x.group===b.dataset.group);if(t){chosen=t.id;redraw()}});
