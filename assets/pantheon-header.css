@@ -6,7 +6,7 @@
 #app-header .dome-title-home{position:absolute;z-index:3;left:36.35%;top:0.8%;width:27.3%;display:block}
 #app-header .dome-title-image{width:100%;height:auto;display:block}
 #app-header .dome-nav{position:absolute;inset:0;z-index:4;pointer-events:none}
-#app-header .dome-nav-table{position:absolute;top:10%;left:11.2%;width:77.6%;table-layout:fixed;border-spacing:0;border-collapse:collapse;pointer-events:none}
+#app-header .dome-nav-table{position:absolute;top:10%;left:19%;width:62%;table-layout:fixed;border-spacing:0;border-collapse:collapse;pointer-events:none}
 #app-header .dome-nav-table td{width:20%;text-align:center;vertical-align:top;padding:0}
 #app-header .dome-nav-table td:nth-child(2),#app-header .dome-nav-table td:nth-child(4){padding-top:calc(100vw * 78 / 2048)}
 #app-header .dome-nav-table td:nth-child(3){padding-top:calc(100vw * 115 / 2048)}
