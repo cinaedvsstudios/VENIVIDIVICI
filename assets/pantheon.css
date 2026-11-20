@@ -179,3 +179,134 @@
  .video-info h2{font-size:23px}
  .video-row .secondary-cta,.video-row .source-link{margin-left:auto}
 }
+
+/* VENIVIDIVICI — approved Pantheon header, pixel-matched to the supplied reference.
+   The original illustration was cropped at its TOP edge, y=148px, retaining
+   natural 2048:494 proportions. No images are stretched. The title and five
+   medallions are separate transparent PNG layers. Only labels are HTML text.
+   Coordinates are measured from that approved image; edit independently. */
+@media (min-width: 761px) {
+  :root { --dome-height: calc(100vw * 494 / 2048); }
+  #app-header { height: var(--dome-height); }
+  #app-header .dome-shell {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    isolation: isolate;
+    background: #f3e7da;
+  }
+  #app-header .dome-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    object-position: center top;
+    pointer-events: none;
+    user-select: none;
+  }
+  #app-header .dome-title-home {
+    position: absolute;
+    z-index: 3;
+    top: 1.417%;
+    left: 30.2734%;
+    width: 40.0391%;
+    height: auto;
+    display: block;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  #app-header .dome-title-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+  }
+  #app-header .dome-nav {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+  }
+  #app-header .dome-hit {
+    position: absolute;
+    transform: translateX(-50%);
+    width: 18%;
+    min-height: 0;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #2d1b12;
+    box-shadow: none;
+    text-align: center;
+    pointer-events: auto;
+    filter: none;
+    transition: filter 150ms ease;
+  }
+  #app-header .dome-hit:hover,
+  #app-header .dome-hit:focus-visible {
+    background: transparent;
+    filter: drop-shadow(0 0 4px rgba(190,139,64,.48));
+  }
+  #app-header .dome-hit:after { display: none; }
+  #app-header .dome-hit .dome-medallion {
+    display: block;
+    width: calc(100vw * 118 / 2048);
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    background: transparent;
+    pointer-events: none;
+    transition: transform 170ms ease;
+  }
+  #app-header .dome-hit:hover .dome-medallion {
+    transform: translateY(-2px);
+  }
+  #app-header .dome-hit .nav-label {
+    display: block;
+    margin-top: calc(100vw * 3 / 2048);
+    color: #2b1a11;
+    font: 700 clamp(11px, 1.25vw, 27px) / 1.2 Georgia, 'Times New Roman', serif;
+    letter-spacing: -.015em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 1px 1px #fff5e3;
+  }
+  #app-header .dome-hit.is-current .nav-label {
+    color: #26170f;
+  }
+  #app-header .dome-hit.is-current .nav-label:after {
+    content: '';
+    display: block;
+    width: 57%;
+    height: 3px;
+    margin: 4px auto 0;
+    border-radius: 2px;
+    background: #d7a33e;
+    box-shadow: 0 1px 3px rgba(155,101,35,.6);
+  }
+  /* Five original medallion centres, with source pixels subtracted from the
+     top-cropped reference. The labels follow each circle automatically. */
+  #app-header .dome-hit[data-key="home"]     { left: 19.189%; top: 22.47%; }
+  #app-header .dome-hit[data-key="episodes"] { left: 34.72%;  top: 39.47%; }
+  #app-header .dome-hit[data-key="videos"]   { left: 49.95%;  top: 45.95%; }
+  #app-header .dome-hit[data-key="wizard"]   { left: 67.68%;  top: 39.47%; }
+  #app-header .dome-hit[data-key="links"]    { left: 81.64%;  top: 22.47%; }
+}
+@media (max-width: 760px) {
+  /* Existing compact mobile navigation remains interactive and accessible. */
+  :root { --dome-height: 118px; }
+}
