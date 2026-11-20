@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded',async function(){
  function save(){try{localStorage.setItem('vvv-studio-values',JSON.stringify(values))}catch(_){}}
  function updateFields(){document.getElementById('studio-fields').innerHTML=current().fields.map(fieldUI).join('');document.getElementById('studio-templates').innerHTML=templateUI();document.getElementById('studio-tabs').innerHTML=groupsUI();}
  function buildPrompt(){const t=current();return t.body.replace(/\{\{([a-z]+)\}\}/g,(m,k)=>String(values[k]||'').trim()||data.fields[k]?.placeholder||'[insert '+k+']');}
- function generate(){output=buildPrompt();const text=document.getElementById('studio-result');text.value=output;text.hidden=false;document.getElementById('studio-copy').disabled=false;document.getElementById('studio-hint').hidden=true;document.getElementById('studio-output-panel').scrollIntoView({behavior:'smooth',block:'start'});}
- function setQuick(which){
+ function generate(scroll=true){output=buildPrompt();const text=document.getElementById('studio-result');text.value=output;text.hidden=false;document.getElementById('studio-copy').disabled=false;document.getElementById('studio-hint').hidden=true;if(scroll)document.getElementById('studio-output-panel').scrollIntoView({behavior:'smooth',block:'nearest'});}
+ function setQuick(which,scroll=true){
   if(which==='nerva'){selected='narration';values={...values,emperor:'Nerva',year:'AD 97',section:'Section 4 — A Son for Rome',length:'Approximately 11–13 minutes',location:'Imperial Rome, following the Praetorian Guard crisis',focus:'Nerva must choose and publicly establish a successor strong enough to hold the empire together',people:'Nerva and Trajan; senators and frontier commanders where supported by the evidence',continuity:'Section 3 ends: “It was to choose a successor strong enough to keep it together.”',sources:'Use the approved Nerva research dossier and primary-source evidence; distinguish disputed reports and reconstruction.'};}
   else{selected='develop';values={...values,emperor:'Trajan',year:'AD 98 onward',section:'Episode 3 — planning',length:'Approximately one hour, divided into recording sections',location:'The Roman frontier and the imperial administration',focus:'Trajan takes over the empire after Nerva; establish the strongest evidence-led human story',people:'Trajan, Nerva and people established by the surviving sources',continuity:'Continue organically from Nerva choosing Trajan as successor.',sources:'Identify relevant primary sources and modern scholarship, with precise citations only when verified.'};}
-  save();updateFields();window.scrollTo({top:document.getElementById('studio-tabs').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
+  save();updateFields();if(scroll)document.getElementById('studio-tabs').scrollIntoView({behavior:'smooth',block:'nearest'});
  }
  function bind(){
   const root=document.getElementById('main');
@@ -50,4 +50,6 @@ document.addEventListener('DOMContentLoaded',async function(){
   });
  }
  render();
+ const preset=new URLSearchParams(location.search).get('quick');
+ if(preset==='nerva'||preset==='trajan'){setQuick(preset,false);generate(false);}
 });
