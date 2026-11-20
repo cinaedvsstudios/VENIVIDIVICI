@@ -94,13 +94,41 @@ function renderEpisode(data){
  if(!ep){$('app-main').innerHTML='<section class="page-content"><h1>Episode not found</h1><a href="index.html?view=episodes">Return to episodes</a></section>';return;}
  document.title=ep.title+' — VENIVIDIVICI';
  const sections=(ep.sections||[]).map((s,i)=>'<details class="script-item" data-script="'+esc(s.file||'')+'"><summary><span class="section-numeral">'+roman(i+1)+'</span><span style="flex:1"><strong>'+esc(s.title)+'</strong><br><span class="section-meta">'+esc(s.status)+(s.words?' · '+Number(s.words).toLocaleString('en-GB')+' words':'')+'</span></span><span class="expand-icon" aria-hidden="true">+</span></summary><div class="script-body"><p class="placeholder">Open to load the original narration.</p></div></details>').join('');
- $('app-main').innerHTML='<section class="page-content"><div class="dossier-heading"><div class="dossier-avatar"><img class="'+imgClass(ep)+'" src="'+originalImage(ep)+'" alt="Original '+esc(ep.title)+' artwork"></div><div class="dossier-heading-text"><div class="page-overline">EPISODE '+roman(ep.number)+' · '+esc(ep.period)+'</div><h1 class="page-title">'+esc(ep.title).toUpperCase()+'</h1><div class="page-subtitle">'+esc(ep.subtitle)+'</div><div class="dossier-facts">'+esc(ep.status)+'</div></div></div><p class="page-description">'+esc(ep.summary)+'</p><div class="page-underline"></div><div class="page-overline">NARRATION SECTIONS</div><div class="script-list">'+(sections||'<p class="page-context-note">This episode has not been written. Its research and outline are the next development step.</p>')+'</div><div class="dossier-action-row">'+(ep.sourceDocumentUrl?'<a class="secondary-cta" href="'+esc(ep.sourceDocumentUrl)+'" target="_blank" rel="noopener noreferrer">Original Google Doc ↗</a>':'')+(ep.id==='02'?pill('WRITE SECTION IV','prompts.html?quick=nerva'):ep.id==='03'?pill('RESEARCH TRAJAN','prompts.html?quick=trajan'):'')+'<a class="secondary-cta" href="index.html?view=episodes">Browse all episodes ↗</a></div><p class="page-context-note">'+(ep.videoUrl?'<a class="source-link" href="'+esc(ep.videoUrl)+'" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>':'There is no verified published episode video link yet.')+'</p></section>';
+ $('app-main').innerHTML='<section class="page-content"><div class="dossier-heading"><div class="dossier-avatar"><img class="'+imgClass(ep)+'" src="'+originalImage(ep)+'" alt="Original '+esc(ep.title)+' artwork"></div><div class="dossier-heading-text"><div class="page-overline">EPISODE '+roman(ep.number)+' · '+esc(ep.period)+'</div><h1 class="page-title">'+esc(ep.title).toUpperCase()+'</h1><div class="page-subtitle">'+esc(ep.subtitle)+'</div><div class="dossier-facts">'+esc(ep.status)+'</div></div></div><p class="page-description">'+esc(ep.summary)+'</p><div class="page-underline"></div><div class="page-overline">NARRATION SECTIONS</div><div class="script-list">'+(sections||'<p class="page-context-note">This episode has not been written. Its research and outline are the next development step.</p>')+'</div><div class="dossier-action-row">'+(ep.sourceDocumentUrl?'<a class="secondary-cta" href="'+esc(ep.sourceDocumentUrl)+'" target="_blank" rel="noopener noreferrer">Original Google Doc ↗</a>':'')+(ep.id==='02'?pill('WRITE SECTION IV','prompts.html?quick=nerva'):'')+pill('RESEARCH THIS EPISODE','prompts.html?episode='+encodeURIComponent(ep.id))+'<a class="secondary-cta" href="index.html?view=episodes">Browse all episodes ↗</a></div><p class="page-context-note">'+(ep.videoUrl?'<a class="source-link" href="'+esc(ep.videoUrl)+'" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>':'There is no verified published episode video link yet.')+'</p></section>';
  document.querySelectorAll('.script-item').forEach(d=>d.addEventListener('toggle',async()=>{
   if(!d.open||d.dataset.loaded)return;d.dataset.loaded='1';const path=d.dataset.script,body=d.querySelector('.script-body');
   if(!path){body.innerHTML='<p class="placeholder">This narration section has not yet been written.</p>';return;}
   try{const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error('missing');const t=(await r.text()).trim();if(!t)throw Error('empty');const div=document.createElement('div');div.className='narration';div.textContent=t;body.replaceChildren(div);}
   catch{body.innerHTML='<p class="placeholder">The original script text has not yet been imported into the repository. No substitute narration is displayed.</p>';}
  }));
+}
+function episodeResearchPreset(episodes,id){
+ const ep=episodes.find(item=>item.id===id);
+ if(!ep)throw new Error('Episode not found: '+id);
+ const previous=episodes.find(item=>item.number===ep.number-1);
+ const next=episodes.find(item=>item.number===ep.number+1);
+ const settings={
+  '01':{location:'The imperial palace on the Palatine, Rome',people:'Domitian, the imperial household and Nerva, as established by evidence'},
+  '02':{location:'Rome: the imperial administration, Senate and Praetorian Guard',people:'Nerva, Trajan and historically evidenced participants in the succession'},
+  '03':{location:'The Roman frontier and Rome during Trajan’s accession and arrival',people:'Trajan, Nerva and other participants established by sources'},
+  '04':{location:'Rome: the Senate during the trial of Marius Priscus; the province of Africa as relevant background',people:'Pliny the Younger, Tacitus, Marius Priscus and Trajan'},
+  '05':{location:'The Danube frontier and Dacia during the campaigns of AD 101–102 and 105–106',people:'Trajan, Decebalus and other historically evidenced participants'},
+  '06':{location:'Bithynia and Pontus, including the communities represented in Pliny’s correspondence',people:'Pliny the Younger, Trajan and individuals actually named in the relevant letters'},
+  '07':{location:'Armenia, Mesopotamia and Trajan’s final journey toward Rome',people:'Trajan, Hadrian and other historically evidenced participants'},
+  '08':{location:'The imperial succession, Roman frontiers and Britain at the beginning of Hadrian’s Wall',people:'Hadrian and historically evidenced participants in the succession and frontier administration'},
+  '09':{location:'Egypt, the Nile and Antinoopolis; the spread of commemorations across the empire',people:'Hadrian, Antinous and other participants established by evidence'},
+  '10':{location:'The imperial household and succession arrangements during Hadrian’s final years',people:'Hadrian, Lucius Aelius, Antoninus, Marcus Aurelius and Lucius Verus'}
+ };
+ const continuity=previous?'Follow Episode '+previous.number+' — '+previous.title+': '+previous.subtitle+' ('+previous.period+'). Continue chronologically without retelling its main events.':'Open the series with Domitian’s final period and the events of AD 96.';
+ return {
+  emperor:ep.title,year:ep.period,section:'Episode '+ep.number+' — '+ep.subtitle,length:'Approximately one-hour narration',
+  location:settings[ep.id]?.location||'Identify historically supported settings for '+ep.subtitle,
+  people:settings[ep.id]?.people||ep.title+' and participants established by sources',
+  focus:(ep.brief||ep.summary)+'\nStory focus: '+(ep.context||[]).join('; '),
+  continuity,
+  sources:'Starting references: '+ep.source+'. Verify relevant passages and reputable scholarship before treating claims as established; distinguish disputed accounts and reconstruction.',
+  extra:'Episode '+ep.number+' — '+ep.title+': '+ep.subtitle+'. Target: approximately one hour. '+continuity+(next?' End at a natural turning point leading toward Episode '+next.number+' — '+next.title+': '+next.subtitle+'.':' End with the documented transition to the next reign; do not compress that reign into this episode.')+' Keep evidence notes separate and do not write narration yet.'
+ };
 }
 async function renderWizard(){
  document.title='Prompts — VENIVIDIVICI';
@@ -110,11 +138,16 @@ async function renderWizard(){
  let values={emperor:'Nerva',year:'AD 97',section:'Section 4 — A Son for Rome',length:'Approximately 11–13 minutes',focus:'Nerva chooses a successor able to secure allegiance of the army',continuity:'Section 3 ends: “It was to choose a successor strong enough to keep it together.”'};
  try{const saved=JSON.parse(localStorage.getItem('venividivici-wizard')||'null');if(saved&&typeof saved==='object')values={...values,...saved}}catch(_){}
  const preset=qs.get('quick');
+ const researchId=qs.get('episode')||(preset==='trajan'?'03':null);
  if(preset==='nerva'){
   chosen='narration';values={...values,emperor:'Nerva',year:'AD 97',section:'Section 4 — A Son for Rome',length:'Approximately 11–13 minutes',location:'Rome and the imperial administration following the Praetorian crisis',focus:'Nerva chooses and establishes a credible successor who can secure the empire',people:'Nerva, Trajan and only historically evidenced participants',continuity:'Section 3 ends: “It was to choose a successor strong enough to keep it together.”',sources:'Use the project research and verify surviving ancient reports; do not invent political or military incidents.'};
- }else if(preset==='trajan'){
-  chosen='develop';values={...values,emperor:'Trajan',year:'AD 98 onward',section:'Episode 3 — planning',length:'Approximately one-hour narration',location:'Imperial administration and Roman frontier, as evidence supports',focus:'Identify a strong, character-led narrative for Trajan becoming emperor after Nerva',people:'Trajan, Nerva and historical people established by sources',continuity:'Follow on naturally from the close of Nerva’s reign',sources:'Use surviving primary sources and reputable modern scholarship; flag disputes clearly.'};
+ }else if(researchId){
+  const catalogue=await getJSON('data/episodes.json');
+  chosen='develop';
+  // A chosen episode replaces every stored field so another episode cannot leak into this prompt.
+  values={...Object.fromEntries(Object.keys(data.fields).map(key=>[key,''])),...episodeResearchPreset(catalogue.episodes,researchId)};
  }
+
  const current=()=>data.templates.find(t=>t.id===chosen)||data.templates[0];
  const store=()=>{try{localStorage.setItem('venividivici-wizard',JSON.stringify(values))}catch(_){}};
  const fillTemplate=()=>current().body.replace(/\{\{([a-z]+)\}\}/g,(whole,k)=>String(values[k]||'').trim()||data.fields[k]?.placeholder||'[insert '+k+']');
@@ -130,7 +163,7 @@ async function renderWizard(){
  $('wizard-form').addEventListener('submit',e=>{e.preventDefault();generate();if(window.innerWidth<1000)$('wizard-output').scrollIntoView({behavior:'smooth',block:'center'})});
  $('wizard-clear').addEventListener('click',()=>{for(const f of current().fields)values[f]='';store();redraw()});
  $('wizard-copy').addEventListener('click',async e=>{const button=e.currentTarget,txt=$('wizard-output').value;try{await navigator.clipboard.writeText(txt);button.textContent='COPIED ✓';}catch(_){const el=$('wizard-output');el.focus();el.select();try{document.execCommand('copy');button.textContent='COPIED ✓';}catch(__){button.textContent='SELECT TEXT'}}setTimeout(()=>{if(button.isConnected)button.textContent='COPY'},1600)});
- if(preset==='nerva'||preset==='trajan'){store();generate()}
+ if(preset==='nerva'||researchId){store();generate()}
 }
 async function boot(){
  shell();
