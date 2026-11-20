@@ -66,3 +66,18 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:poi
 .studio-output-note{color:var(--quiet);font-size:11px;margin:14px 0 0}
 @media(max-width:900px){.status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.studio-templates{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:670px){.status-grid,.studio-templates,.studio-fields{grid-template-columns:1fr}.status-card{min-height:0}.studio-field-wide{grid-column:auto}.next-task,.studio-output-head{align-items:flex-start;flex-direction:column}.next-task .button{width:100%}.studio-output-panel{padding:22px 18px}.studio-quick{flex-direction:column}.studio-quick-action{min-width:0}.studio-tabs{gap:4px}.studio-tab{padding:9px 10px;font-size:10px}}
+
+/* Supplied VENIVIDIVICI artwork */
+.brand-logo{width:226px;height:auto;max-height:64px;object-fit:contain;object-position:left center;flex-shrink:0}
+.hero-logo{position:absolute;right:0;top:38px;height:510px;width:auto;max-width:45%;object-fit:contain;opacity:.28;filter:drop-shadow(0 6px 25px rgba(0,0,0,.25));pointer-events:none}
+.hero-copy{position:relative;z-index:2}
+.episode-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.49;pointer-events:none}
+.episode-card:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(10,15,11,.98) 0%,rgba(13,17,14,.77) 55%,rgba(13,17,14,.23) 100%)}
+.episode-top,.episode-main,.episode-foot{z-index:1}
+.episode-card:before{z-index:1}
+.episode-card:nth-child(2) .episode-art{object-position:center 26%;opacity:.44}
+.episode-card:nth-child(3){background:linear-gradient(110deg,#363326,#1b1f1a)}
+.production-overview{background-image:linear-gradient(rgba(20,25,20,.96),rgba(20,25,20,.96)),url("images/marble-wall.webp");background-size:cover,340px}
+.hero{background-image:linear-gradient(100deg,rgba(14,19,16,1) 15%,rgba(19,28,22,.97) 62%,rgba(34,38,28,.74) 100%),radial-gradient(ellipse at 80% 55%,#645239,#101713 70%)}
+@media(max-width:900px){.hero-logo{right:-22%;max-width:65%;opacity:.15}}
+@media(max-width:670px){.brand-logo{width:193px;max-height:55px}.hero-logo{display:none}.hero-copy{padding-top:62px;padding-bottom:65px}.header .nav{gap:6px}}
