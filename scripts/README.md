@@ -1,15 +1,22 @@
-# Approved narration files
+# ElevenLabs narration files
 
-Place the **actual approved ElevenLabs narration scripts** here as plain UTF-8 text:
+These are **draft narration texts** for the VENIVIDIVICI production dashboard. Their content is loaded when a section is expanded.
 
-- episode-01-section-1.txt
-- episode-01-section-2.txt
-- episode-01-section-3.txt
-- episode-01-section-4.txt
-- episode-02-section-1.txt
-- episode-02-section-2.txt
-- episode-02-section-3.txt
+## Imported from Episode 2 Google Doc
 
-The page automatically loads any such file when its section is opened. Do not put reconstructed examples, research citations, image descriptions or production directions into the spoken narration files. Episode 2 Section 4 is still marked unwritten until an original text exists.
+- `episode-02-section-1.txt` — The Empty Throne
+- `episode-02-section-2.txt` — The Burden of Mercy
+- `episode-02-section-3.txt` — The Emperor and the Guard
 
-An empty placeholder transcript must **not** be committed under these names, because doing so would misleadingly appear as recovered source content.
+They were transcribed from the provided original Google Doc without substituting new narration. **Episode 2 Section 4 (A Son for Rome) is not yet written.**
+
+## Still required
+
+The four completed Episode 1 original narration sections have not yet been located as full source text. Import these verbatim when available:
+
+- `episode-01-section-1.txt`
+- `episode-01-section-2.txt`
+- `episode-01-section-3.txt`
+- `episode-01-section-4.txt`
+
+Do not add blank transcript files or replace missing originals with style examples. Only spoken words belong in ElevenLabs narration files; research, historical sourcing, visual prompts and publication materials stay separate.
