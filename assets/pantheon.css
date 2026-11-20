@@ -63,3 +63,29 @@
  .landing-title{font-size:clamp(30px,7vw,43px)}
  .landing-subtitle{font-size:clamp(21px,5vw,29px)}
 }
+
+/* FIX: Crop the TOP of the Pantheon artwork immediately above the gold
+   horizontal line over the title. Preserve its original aspect ratio:
+   cover + bottom anchor clips top pixels; NEVER stretch/squash the image.
+   Original asset 1672 x 405; visible source crop starts at ~y=100. */
+:root{--dome-height:18.25vw}
+#app-header{height:var(--dome-height)}
+#app-header .dome-image{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ object-position:center bottom;
+ inset:0;
+}
+#app-header .dome-hit[data-key="home"]{top:32.3%}
+#app-header .dome-hit[data-key="episodes"]{top:52.9%}
+#app-header .dome-hit[data-key="characters"]{top:69.5%}
+#app-header .dome-hit[data-key="context"]{top:72.1%}
+#app-header .dome-hit[data-key="wizard"]{top:69.5%}
+#app-header .dome-hit[data-key="resources"]{top:53.5%}
+#app-header .dome-hit[data-key="about"]{top:32.3%}
+#app-header .dome-title-home{top:0;height:44%}
+@media(max-width:760px){
+ :root{--dome-height:118px}
+ #app-header{height:118px}
+}
